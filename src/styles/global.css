@@ -1,1 +1,8 @@
-@import "tailwindcss";
+.win-resizable {
+  resize: both;
+  overflow: hidden;
+  min-width: 320px;
+  min-height: 200px;
+  max-width: 95vw;
+  max-height: calc(100vh - 50px);
+}

@@ -1,6 +1,6 @@
 ---
 import '../styles/global.css';
-import { PROJECTS } from '../data/projects';
+import { CATEGORIZED_PROJECTS } from '../data/projects';
 import Window from '../components/Window.astro';
 import DesktopGrid from '../components/DesktopGrid.astro';
 import ProjectCard from '../components/ProjectCard.astro';
@@ -17,21 +17,74 @@ import Taskbar from '../components/Taskbar.astro';
 
   <body class="bg-[#008080] text-sm min-h-screen overflow-hidden select-none relative">
 
-    <!-- Iconos del Escritorio -->
     <DesktopGrid />
 
-    <!-- Ventana: About Me -->
-    <Window id="win-about" title="💻 About_Me.exe" defaultW="380px" defaultH="300px">
+    <!-- VENTANA PRINCIPAL DE PROYECTOS (Muestra las Carpetas) -->
+    <Window id="win-projects" title="📁 C:\Portfolio\Projects" defaultW="580px" defaultH="360px">
+      <div class="p-4 bg-white win-border-inset flex-1 overflow-y-auto win-scroll">
+        <p class="text-xs text-gray-500 mb-4">Selecciona una carpeta para explorar las subcategorías:</p>
+        
+        <div class="grid grid-cols-3 gap-4">
+          {CATEGORIZED_PROJECTS.map((folder) => (
+            <button 
+              onclick={`openWin('win-folder-${folder.id}')`}
+              class="flex flex-col items-center justify-center p-3 hover:bg-blue-100 border border-transparent hover:border-blue-300 rounded cursor-pointer group"
+            >
+              <div class="text-4xl mb-1 group-hover:scale-105 transition-transform">{folder.icon}</div>
+              <span class="text-xs font-bold text-black text-center group-hover:text-blue-900">{folder.name}</span>
+              <span class="text-[10px] text-gray-500">{folder.projects.length} item(s)</span>
+            </button>
+          ))}
+        </div>
+      </div>
+    </Window>
+
+    <!-- VENTANAS SECUNDARIAS (Una por cada Carpeta) -->
+    {CATEGORIZED_PROJECTS.map((folder) => (
+      <Window 
+        id={`win-folder-${folder.id}`} 
+        title={`📁 C:\\Portfolio\\Projects\\${folder.name}`} 
+        defaultW="600px" 
+        defaultH="380px"
+        initialTop="90px"
+        initialLeft="140px"
+      >
+        <div class="p-3 bg-white win-border-inset flex-1 overflow-y-auto win-scroll space-y-4">
+          {folder.projects.map((proj) => (
+            <ProjectCard 
+              id={proj.id}
+              title={proj.title}
+              tag={proj.tag}
+              shortDesc={proj.shortDesc}
+            />
+          ))}
+        </div>
+      </Window>
+    ))}
+
+    <!-- VENTANAS DE DETALLE DE CADA PROYECTO -->
+    {CATEGORIZED_PROJECTS.flatMap(f => f.projects).map((proj) => (
+      <DetailWindow 
+        id={proj.id}
+        title={proj.title}
+        description={proj.detail.description}
+        whatIDid={proj.detail.whatIDid}
+        mediaUrl={proj.detail.mediaUrl}
+        githubUrl={proj.detail.githubUrl}
+      />
+    ))}
+
+    <!-- Ventana About Me -->
+    <Window id="win-about" title="💻 About_Me.exe" defaultW="380px" defaultH="280px">
       <div class="p-3 overflow-y-auto flex-1 win-scroll flex flex-col justify-between">
         <div class="flex items-start gap-3 mb-4">
           <div class="text-4xl">👤</div>
           <div>
             <h2 class="text-base font-bold">Claudia Zarzuela Amor</h2>
-            <p class="text-xs text-gray-700">Game Dev & Software Engineer</p>
+            <p class="text-xs text-gray-700">Game Developer & Software Engineer</p>
           </div>
         </div>
         <div class="bg-white win-border-inset p-3 text-black text-xs space-y-2">
-          <p><strong>Level:</strong> Pro</p>
           <p><strong>Tech Stack:</strong> C++, Unreal Engine 5, VR Systems, AI Integration.</p>
         </div>
         <div class="flex justify-end pt-2">
@@ -40,44 +93,89 @@ import Taskbar from '../components/Taskbar.astro';
       </div>
     </Window>
 
-    <!-- Ventana: Lista de Proyectos -->
-    <Window id="win-projects" title="📁 C:\Portfolio\Projects" defaultW="600px" defaultH="380px">
-      <div class="p-3 bg-white win-border-inset flex-1 overflow-y-auto win-scroll space-y-4">
-        {PROJECTS.map((proj) => (
-          <ProjectCard 
-            id={proj.id}
-            title={proj.title}
-            tag={proj.tag}
-            shortDesc={proj.shortDesc}
-          />
-        ))}
-      </div>
-    </Window>
-
-    <!-- Ventanas Modales de Detalle (Generadas automáticamente) -->
-    {PROJECTS.map((proj) => (
-      <DetailWindow 
-        id={proj.id}
-        title={proj.title}
-        description={proj.detail.description}
-        whatIDid={proj.detail.whatIDid}
-        mediaUrl={proj.detail.mediaUrl}
-        githubUrl={proj.detail.githubUrl}
-        demoUrl={proj.detail.demoUrl}
-      />
-    ))}
-
-    <!-- Ventana Easter Egg (Half-Life 3) -->
-    <Window id="win-hl3" title="⚠️ Error" defaultW="300px" defaultH="150px">
-      <div class="p-4 flex flex-col items-center justify-center gap-3 text-center">
-        <p class="text-xs">hl3.exe has performed an illegal operation and will be closed.</p>
-        <button onclick="closeWin('win-hl3')" class="bg-[#c0c0c0] px-4 py-1 win-border win-btn text-xs font-bold cursor-pointer">Cancel</button>
-      </div>
-    </Window>
-
-    <!-- Barra de Tareas -->
     <Taskbar />
 
-    <script src="../scripts/wm.js"></script>
+    <!-- JS de control global con soporte de rescalado + límites -->
+    <script is:inline>
+      let zIndexCounter = 40;
+
+      window.bringToFront = function(win) {
+        zIndexCounter++;
+        win.style.zIndex = zIndexCounter;
+      };
+
+      window.openWin = function(id) {
+        const win = document.getElementById(id);
+        if (win) {
+          win.classList.remove('hidden');
+          window.bringToFront(win);
+        }
+      };
+
+      window.closeWin = function(id) {
+        const win = document.getElementById(id);
+        if (win) win.classList.add('hidden');
+      };
+
+      window.toggleMaximize = function(id, defaultW, defaultH, maxW, maxH) {
+        const win = document.getElementById(id);
+        if (!win) return;
+        
+        if (win.dataset.maximized === "true") {
+          win.style.width = defaultW;
+          win.style.height = defaultH;
+          win.dataset.maximized = "false";
+        } else {
+          win.style.width = maxW || "85vw";
+          win.style.height = maxH || "calc(100vh - 60px)";
+          win.dataset.maximized = "true";
+        }
+        window.bringToFront(win);
+      };
+
+      function initWindowManager() {
+        document.querySelectorAll('.win-resizable').forEach(win => {
+          const header = win.querySelector('.window-header');
+          let isDragging = false;
+          let offsetX = 0, offsetY = 0;
+
+          win.addEventListener('mousedown', () => window.bringToFront(win));
+
+          if (header) {
+            header.addEventListener('mousedown', (e) => {
+              if (e.target.tagName === 'BUTTON') return;
+              isDragging = true;
+              offsetX = e.clientX - win.offsetLeft;
+              offsetY = e.clientY - win.offsetTop;
+              window.bringToFront(win);
+            });
+          }
+
+          document.addEventListener('mousemove', (e) => {
+            if (isDragging) {
+              let newX = e.clientX - offsetX;
+              let newY = e.clientY - offsetY;
+
+              const maxLeft = window.innerWidth - win.offsetWidth;
+              const maxTop = window.innerHeight - win.offsetHeight - 40;
+
+              newX = Math.max(0, Math.min(newX, maxLeft));
+              newY = Math.max(0, Math.min(newY, maxTop));
+
+              win.style.left = newX + 'px';
+              win.style.top = newY + 'px';
+            }
+          });
+
+          document.addEventListener('mouseup', () => { isDragging = false; });
+        });
+      }
+
+      if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', initWindowManager);
+      } else {
+        initWindowManager();
+      }
+    </script>
   </body>
 </html>

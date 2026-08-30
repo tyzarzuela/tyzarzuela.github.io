@@ -1,13 +1,23 @@
 ---
 ---
-<!-- Mascota virtual con melodías variadas y diálogos dinámicos -->
-<div 
-  id="desktop-pet" 
-  class="fixed z-40 select-none cursor-pointer text-3xl pointer-events-auto"
-  style="bottom: 40px; left: 0px;"
-  title="¡Haz clic para interactuar con la oveja!"
->
-  🐑
+<!-- Mascota virtual con burbuja de diálogo integrada -->
+<div id="pet-container" class="fixed z-40 select-none pointer-events-auto" style="bottom: 40px; left: 0px;">
+  <!-- Bocadillo de diálogo flotante -->
+  <div 
+    id="pet-speech" 
+    class="hidden absolute bottom-10 left-1/2 -translate-x-1/2 bg-[#ffffe1] text-black text-[11px] font-mono px-2 py-1 win-border shadow-md whitespace-nowrap z-50 animate-fade-in"
+  >
+    ¡Baaa!
+  </div>
+
+  <!-- La oveja -->
+  <div 
+    id="desktop-pet" 
+    class="cursor-pointer text-3xl"
+    title="¡Haz clic para interactuar con la oveja!"
+  >
+    🐑
+  </div>
 </div>
 
 <style>
@@ -23,12 +33,15 @@
 
 <script is:inline>
   (function initWalkingPet() {
+    const container = document.getElementById('pet-container');
     const pet = document.getElementById('desktop-pet');
-    if (!pet) return;
+    const speech = document.getElementById('pet-speech');
+    if (!container || !pet || !speech) return;
 
     let posX = 50;
     let direction = 1; 
     const speed = 0.8; 
+    let hideTimeout = null;
 
     pet.style.setProperty('--pet-scale', 'scaleX(-1)');
     pet.classList.add('walking');
@@ -47,24 +60,23 @@
         pet.style.setProperty('--pet-scale', 'scaleX(-1)');
       }
 
-      pet.style.left = posX + 'px';
+      container.style.left = posX + 'px';
       requestAnimationFrame(animatePet);
     }
 
     requestAnimationFrame(animatePet);
 
-    // Variedad de melodías chiptune aleatorias de 8 bits
+    // Reproductor chiptune aleatorio
     function playRandomChiptune() {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
       if (!AudioContext) return;
       const ctx = new AudioContext();
 
-      // Diferentes patrones de notas para que suene variado en cada clic
       const songPatterns = [
-        [523.25, 659.25, 783.99, 1046.50], // Acorde alegre ascendente
-        [880.00, 783.99, 659.25, 523.25], // Secuencia descendente
-        [440.00, 554.37, 659.25, 880.00, 987.77], // Escala armónica
-        [659.25, 523.25, 783.99, 392.00]  // Arpegio divertido
+        [523.25, 659.25, 783.99, 1046.50], 
+        [880.00, 783.99, 659.25, 523.25], 
+        [440.00, 554.37, 659.25, 880.00, 987.77], 
+        [659.25, 523.25, 783.99, 392.00]  
       ];
 
       const chosenMelody = songPatterns[Math.floor(Math.random() * songPatterns.length)];
@@ -73,7 +85,7 @@
         const osc = ctx.createOscillator();
         const gain = ctx.createGain();
 
-        osc.type = 'square'; // Sonido retro clásico de consola
+        osc.type = 'square';
         osc.frequency.value = freq;
 
         const noteTime = ctx.currentTime + (index * 0.12);
@@ -88,20 +100,28 @@
       });
     }
 
-    // Interacción al hacer clic con textos variados y música
+    // Interacción al hacer clic mostrando un bocadillo en lugar de un alert
     pet.addEventListener('click', () => {
       playRandomChiptune();
 
       const interactions = [
-        "🎵 ¡Baaa! La oveja toca unos acordes de 8 bits.",
-        "🎮 ¡Modo videojuego retro activado por la mascota de Claudia!",
-        "✨ ¡Sintetizador MIDI portátil funcionando al 100%!",
-        "🐑 ¡Baa! Gracias por audicionar este tema chiptune.",
-        "💤 ¡La oveja se ha tomado un descanso musical y vuelve a caminar!"
+        "🎵 ¡Baaa! Acordes de 8 bits.",
+        "🎮 ¡Modo retro activado!",
+        "✨ ¡Sintetizador operativo!",
+        "🐑 ¡Hola desde Windows 98!",
+        "💤 ¡Zzz... Sigo caminando!"
       ];
 
       const randomText = interactions[Math.floor(Math.random() * interactions.length)];
-      alert(randomText);
+      
+      speech.innerText = randomText;
+      speech.classList.remove('hidden');
+
+      // Ocultar el bocadillo automáticamente tras 3 segundos
+      if (hideTimeout) clearTimeout(hideTimeout);
+      hideTimeout = setTimeout(() => {
+        speech.classList.add('hidden');
+      }, 3000);
     });
   })();
 </script>

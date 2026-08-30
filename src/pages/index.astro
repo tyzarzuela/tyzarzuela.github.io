@@ -1,294 +1,83 @@
 ---
 import '../styles/global.css';
+import { PROJECTS } from '../data/projects';
+import Window from '../components/Window.astro';
+import DesktopGrid from '../components/DesktopGrid.astro';
+import ProjectCard from '../components/ProjectCard.astro';
+import DetailWindow from '../components/DetailWindow.astro';
+import Taskbar from '../components/Taskbar.astro';
 ---
 
 <html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Claudia OS - Windows 98 Edition</title>
-		
-		<style>
-			body {
-				font-family: Tahoma, 'Segoe UI', Geneva, Verdana, sans-serif;
-			}
-			.win-border {
-				border: 2px solid;
-				border-top-color: #dfdfdf;
-				border-left-color: #dfdfdf;
-				border-right-color: #000000;
-				border-bottom-color: #000000;
-				box-shadow: inset 1px 1px 0px 0px #ffffff, inset -1px -1px 0px 0px #808080;
-			}
-			.win-border-inset {
-				border: 2px solid;
-				border-top-color: #808080;
-				border-left-color: #808080;
-				border-right-color: #ffffff;
-				border-bottom-color: #ffffff;
-				box-shadow: inset 1px 1px 0px 0px #000000, inset -1px -1px 0px 0px #dfdfdf;
-			}
-			.win-btn:active {
-				border-top-color: #000000;
-				border-left-color: #000000;
-				border-right-color: #ffffff;
-				border-bottom-color: #ffffff;
-				box-shadow: inset 1px 1px 0px 0px #808080;
-			}
-			.title-bar-gradient {
-				background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
-			}
-			
-			.win-resizable {
-				resize: both;
-				overflow: hidden;
-				min-width: 320px;
-				min-height: 220px;
-				max-width: 95vw;
-				max-height: calc(100vh - 50px);
-			}
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Claudia OS - Windows 98</title>
+  </head>
 
-			.win-scroll::-webkit-scrollbar {
-				width: 16px;
-				height: 16px;
-				background-color: #c0c0c0;
-			}
-			.win-scroll::-webkit-scrollbar-track {
-				background-color: #e0e0e0;
-				border: 1px solid #808080;
-			}
-			.win-scroll::-webkit-scrollbar-thumb {
-				background-color: #c0c0c0;
-				border: 2px solid;
-				border-top-color: #dfdfdf;
-				border-left-color: #dfdfdf;
-				border-right-color: #000000;
-				border-bottom-color: #000000;
-			}
-		</style>
-	</head>
+  <body class="bg-[#008080] text-sm min-h-screen overflow-hidden select-none relative">
 
-	<body class="bg-[#008080] text-sm min-h-screen overflow-hidden select-none relative">
+    <!-- Iconos del Escritorio -->
+    <DesktopGrid />
 
-		<!-- ICONOS DEL ESCRITORIO -->
-		<div class="absolute top-6 left-6 flex flex-col gap-6 w-24 z-10">
-			<button onclick="openWin('win-about')" class="flex flex-col items-center gap-1 group cursor-pointer">
-				<div class="w-10 h-10 bg-[#008080] flex items-center justify-center text-3xl">💻</div>
-				<span class="text-white text-xs text-center leading-tight px-1 group-focus:bg-[#000080]">About_Me.exe</span>
-			</button>
+    <!-- Ventana: About Me -->
+    <Window id="win-about" title="💻 About_Me.exe" defaultW="380px" defaultH="300px">
+      <div class="p-3 overflow-y-auto flex-1 win-scroll flex flex-col justify-between">
+        <div class="flex items-start gap-3 mb-4">
+          <div class="text-4xl">👤</div>
+          <div>
+            <h2 class="text-base font-bold">Claudia Zarzuela Amor</h2>
+            <p class="text-xs text-gray-700">Game Dev & Software Engineer</p>
+          </div>
+        </div>
+        <div class="bg-white win-border-inset p-3 text-black text-xs space-y-2">
+          <p><strong>Level:</strong> Pro</p>
+          <p><strong>Tech Stack:</strong> C++, Unreal Engine 5, VR Systems, AI Integration.</p>
+        </div>
+        <div class="flex justify-end pt-2">
+          <button onclick="closeWin('win-about')" class="bg-[#c0c0c0] px-4 py-1 win-border win-btn text-xs font-bold cursor-pointer">OK</button>
+        </div>
+      </div>
+    </Window>
 
-			<button onclick="openWin('win-projects')" class="flex flex-col items-center gap-1 group cursor-pointer">
-				<div class="w-10 h-10 bg-[#008080] flex items-center justify-center text-3xl">📁</div>
-				<span class="text-white text-xs text-center leading-tight px-1 group-focus:bg-[#000080]">Projects</span>
-			</button>
-		</div>
+    <!-- Ventana: Lista de Proyectos -->
+    <Window id="win-projects" title="📁 C:\Portfolio\Projects" defaultW="600px" defaultH="380px">
+      <div class="p-3 bg-white win-border-inset flex-1 overflow-y-auto win-scroll space-y-4">
+        {PROJECTS.map((proj) => (
+          <ProjectCard 
+            id={proj.id}
+            title={proj.title}
+            tag={proj.tag}
+            shortDesc={proj.shortDesc}
+          />
+        ))}
+      </div>
+    </Window>
 
-		<!-- VENTANA: ABOUT ME -->
-		<div id="win-about" class="win-resizable hidden absolute top-12 left-12 w-[380px] h-[300px] bg-[#c0c0c0] win-border p-[2px] shadow-2xl z-20 flex flex-col">
-			<div class="window-header title-bar-gradient text-white px-1 py-[2px] flex justify-between items-center font-bold text-sm cursor-move shrink-0">
-				<span class="flex items-center gap-1 pointer-events-none">💻 About_Me.exe</span>
-				<div class="flex gap-[2px]">
-					<button onclick="toggleMaximize('win-about', '380px', '300px', '550px', '400px')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">◻</button>
-					<button onclick="closeWin('win-about')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">X</button>
-				</div>
-			</div>
-			<div class="p-3 overflow-y-auto flex-1 win-scroll flex flex-col justify-between">
-				<div>
-					<div class="flex items-start gap-3 mb-4">
-						<div class="text-4xl">👤</div>
-						<div>
-							<h2 class="text-base font-bold">Claudia Zarzuela Amor</h2>
-							<p class="text-xs text-gray-700">Game Dev & Software Engineer</p>
-						</div>
-					</div>
-					<div class="bg-white win-border-inset p-3 text-black text-xs space-y-2">
-						<p><strong>Level:</strong> Pro</p>
-						<p><strong>Tech Stack:</strong> C++, Unreal Engine 5, VR Systems, AI Integration.</p>
-					</div>
-				</div>
-				<div class="flex justify-end pt-2">
-					<button onclick="closeWin('win-about')" class="bg-[#c0c0c0] px-4 py-1 win-border win-btn text-xs font-bold cursor-pointer">OK</button>
-				</div>
-			</div>
-		</div>
+    <!-- Ventanas Modales de Detalle (Generadas automáticamente) -->
+    {PROJECTS.map((proj) => (
+      <DetailWindow 
+        id={proj.id}
+        title={proj.title}
+        description={proj.detail.description}
+        whatIDid={proj.detail.whatIDid}
+        mediaUrl={proj.detail.mediaUrl}
+        githubUrl={proj.detail.githubUrl}
+        demoUrl={proj.detail.demoUrl}
+      />
+    ))}
 
-		<!-- VENTANA: PROJECTS -->
-		<div id="win-projects" class="win-resizable hidden absolute top-12 left-20 w-[600px] h-[380px] bg-[#c0c0c0] win-border p-[2px] shadow-2xl z-30 flex flex-col">
-			<div class="window-header title-bar-gradient text-white px-1 py-[2px] flex justify-between items-center font-bold text-sm cursor-move shrink-0">
-				<span class="flex items-center gap-1 pointer-events-none">📁 C:\Portfolio\Projects</span>
-				<div class="flex gap-[2px]">
-					<button onclick="toggleMaximize('win-projects', '600px', '380px', '850px', '550px')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">◻</button>
-					<button onclick="closeWin('win-projects')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">X</button>
-				</div>
-			</div>
+    <!-- Ventana Easter Egg (Half-Life 3) -->
+    <Window id="win-hl3" title="⚠️ Error" defaultW="300px" defaultH="150px">
+      <div class="p-4 flex flex-col items-center justify-center gap-3 text-center">
+        <p class="text-xs">hl3.exe has performed an illegal operation and will be closed.</p>
+        <button onclick="closeWin('win-hl3')" class="bg-[#c0c0c0] px-4 py-1 win-border win-btn text-xs font-bold cursor-pointer">Cancel</button>
+      </div>
+    </Window>
 
-			<div class="flex gap-4 px-2 py-1 bg-[#c0c0c0] text-xs shrink-0">
-				<span class="hover:bg-blue-800 hover:text-white px-1 cursor-pointer">File</span>
-				<span class="hover:bg-blue-800 hover:text-white px-1 cursor-pointer">Edit</span>
-				<span class="hover:bg-blue-800 hover:text-white px-1 cursor-pointer">View</span>
-			</div>
-			
-			<div class="p-3 bg-white win-border-inset flex-1 overflow-y-auto win-scroll space-y-4">
-				
-				<!-- PROYECTO 1 -->
-				<div class="border-b border-gray-300 pb-3 flex items-start gap-3">
-					<div class="w-16 h-14 bg-black flex justify-center items-center shrink-0 border border-black cursor-pointer" onclick="openWin('win-detail-vr')">
-						<div class="w-10 h-8 border-2 border-white relative flex justify-center items-center">
-							<div class="absolute top-1 left-1 w-2 h-2 rounded-full bg-white"></div>
-						</div>
-					</div>
-					<div class="flex-1">
-						<div class="flex justify-between items-center">
-							<button onclick="openWin('win-detail-vr')" class="font-bold text-[#000080] text-sm hover:underline text-left cursor-pointer">VR LLM Interaction System</button>
-							<span class="text-xs bg-[#c0c0c0] px-2 py-0.5 win-border win-btn font-sans">UE5 / C++</span>
-						</div>
-						<p class="text-xs text-gray-800 mt-1">Bachelor thesis project. VR game prototype executing dynamic open-source LLM prompts through custom Blueprints.</p>
-					</div>
-				</div>
+    <!-- Barra de Tareas -->
+    <Taskbar />
 
-				<!-- PROYECTO 2 -->
-				<div class="border-b border-gray-300 pb-3 flex items-start gap-3">
-					<div class="w-16 h-14 bg-black flex justify-center items-center shrink-0 border border-black cursor-pointer" onclick="openWin('win-detail-eden')">
-						<div class="w-10 h-8 border-2 border-white relative flex justify-center items-center">
-							<div class="absolute top-1 left-1 w-2 h-2 rounded-full bg-white"></div>
-						</div>
-					</div>
-					<div class="flex-1">
-						<div class="flex justify-between items-center">
-							<button onclick="openWin('win-detail-eden')" class="font-bold text-[#000080] text-sm hover:underline text-left cursor-pointer">EDEN Custom Engine</button>
-							<span class="text-xs bg-[#c0c0c0] px-2 py-0.5 win-border win-btn font-sans">C++ / ECS</span>
-						</div>
-						<p class="text-xs text-gray-800 mt-1">2D/3D game engine built from scratch in C++. Features modular ECS, custom rendering pipeline, and physics.</p>
-					</div>
-				</div>
-
-			</div>
-		</div>
-
-		<!-- VENTANA DETALLE DE PROYECTO (PLANTILLA PARA MODIFICAR) -->
-		<div id="win-detail-vr" class="win-resizable hidden absolute top-16 left-32 w-[650px] h-[450px] bg-[#c0c0c0] win-border p-[2px] shadow-2xl z-40 flex flex-col">
-			<div class="window-header title-bar-gradient text-white px-1 py-[2px] flex justify-between items-center font-bold text-sm cursor-move shrink-0">
-				<span class="flex items-center gap-1 pointer-events-none">🥽 VR LLM Interaction System - Details</span>
-				<div class="flex gap-[2px]">
-					<button onclick="toggleMaximize('win-detail-vr', '650px', '450px', '850px', '550px')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">◻</button>
-					<button onclick="closeWin('win-detail-vr')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">X</button>
-				</div>
-			</div>
-
-			<div class="p-3 bg-white win-border-inset flex-1 overflow-y-auto win-scroll space-y-4">
-				<h2 class="text-base font-bold text-[#000080]">VR LLM Interaction System</h2>
-				
-				<!-- MEDIA PLACEHOLDER (Imágenes o Vídeo) -->
-				<div class="w-full h-48 bg-black flex flex-col items-center justify-center text-white gap-2 win-border-inset">
-					<span class="text-3xl">🎥 / 🖼️</span>
-					<span class="text-xs text-gray-400">[ Aquí puedes poner un &lt;iframe&gt; de YouTube o un &lt;img src="..." /&gt; ]</span>
-				</div>
-
-				<div class="space-y-2 text-xs text-black">
-					<p><strong>Descripción:</strong> Este proyecto explora la integración de modelos de lenguaje en tiempo real dentro de experiencias inmersivas de realidad virtual.</p>
-					<p><strong>Lo que hice:</strong> Diseñé la arquitectura en C++ para conectar la API del LLM local con Unreal Engine 5 mediante peticiones asíncronas, evitando bajadas de FPS en VR.</p>
-				</div>
-
-				<!-- ENLACES DEL PROYECTO -->
-				<div class="pt-2 border-t border-gray-300 flex gap-4">
-					<a href="https://github.com/tyzarzuela" target="_blank" class="text-blue-600 underline text-xs font-bold">🔗 Ver Repositorio GitHub</a>
-					<a href="#" class="text-blue-600 underline text-xs font-bold">📄 Leer Documentación</a>
-				</div>
-			</div>
-		</div>
-
-		<!-- BARRA DE TAREAS -->
-		<div class="fixed bottom-0 left-0 w-full h-10 bg-[#c0c0c0] border-t-2 border-white flex justify-between items-center px-1 z-50">
-			<button id="start-btn" onclick="toggleStartMenu()" class="h-8 px-2 bg-[#c0c0c0] win-border win-btn flex items-center gap-2 font-bold text-black cursor-pointer">
-				<span class="text-base">🪟</span>
-				<span>Start</span>
-			</button>
-			<div class="h-7 px-3 bg-[#c0c0c0] win-border-inset flex items-center text-xs text-black" id="win-clock">12:00 PM</div>
-		</div>
-
-		<!-- LÓGICA DE CONTROL Y LÍMITES DE PANTALLA -->
-		<script is:inline>
-			let zIndexCounter = 40;
-
-			function bringToFront(win) {
-				zIndexCounter++;
-				win.style.zIndex = zIndexCounter;
-			}
-
-			function openWin(id) {
-				const win = document.getElementById(id);
-				win.classList.remove('hidden');
-				bringToFront(win);
-			}
-
-			function closeWin(id) {
-				document.getElementById(id).classList.add('hidden');
-			}
-
-			function toggleMaximize(id, defaultW, defaultH, maxW, maxH) {
-				const win = document.getElementById(id);
-				if (win.style.width === maxW) {
-					win.style.width = defaultW;
-					win.style.height = defaultH;
-				} else {
-					win.style.width = maxW;
-					win.style.height = maxH;
-				}
-				bringToFront(win);
-			}
-
-			// ARRASTRE DE VENTANAS CON CLAMPING (NUNCA SALEN DE LA PANTALLA)
-			document.querySelectorAll('[id^="win-"]').forEach(win => {
-				const header = win.querySelector('.window-header');
-				let isDragging = false;
-				let offsetX = 0, offsetY = 0;
-
-				win.addEventListener('mousedown', () => bringToFront(win));
-
-				if (header) {
-					header.addEventListener('mousedown', (e) => {
-						if (e.target.tagName === 'BUTTON') return;
-						isDragging = true;
-						offsetX = e.clientX - win.offsetLeft;
-						offsetY = e.clientY - win.offsetTop;
-						bringToFront(win);
-					});
-				}
-
-				document.addEventListener('mousemove', (e) => {
-					if (isDragging) {
-						let newX = e.clientX - offsetX;
-						let newY = e.clientY - offsetY;
-
-						const maxLeft = window.innerWidth - win.offsetWidth;
-						const maxTop = window.innerHeight - win.offsetHeight - 40; // 40px por la barra de tareas
-
-						// Límites estrictos (0 a ancho/alto de pantalla)
-						newX = Math.max(0, Math.min(newX, maxLeft));
-						newY = Math.max(0, Math.min(newY, maxTop));
-
-						win.style.left = newX + 'px';
-						win.style.top = newY + 'px';
-					}
-				});
-
-				document.addEventListener('mouseup', () => {
-					isDragging = false;
-				});
-			});
-
-			function updateClock() {
-				const now = new Date();
-				let hours = now.getHours();
-				let minutes = now.getMinutes();
-				const ampm = hours >= 12 ? 'PM' : 'AM';
-				hours = hours % 12 || 12;
-				minutes = minutes < 10 ? '0' + minutes : minutes;
-				document.getElementById('win-clock').innerText = `${hours}:${minutes} ${ampm}`;
-			}
-			setInterval(updateClock, 1000);
-			updateClock();
-		</script>
-	</body>
+    <script src="../scripts/wm.js"></script>
+  </body>
 </html>

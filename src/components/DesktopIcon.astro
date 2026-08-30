@@ -1,0 +1,21 @@
+---
+interface Props {
+  icon: string;
+  label: string;
+  targetWin: string;
+}
+
+const { icon, label, targetWin } = Astro.props;
+---
+
+<button 
+  onclick={`openWin('${targetWin}')`} 
+  class="flex flex-col items-center gap-1 group cursor-pointer w-20 text-center"
+>
+  <div class="w-10 h-10 flex items-center justify-center text-3xl drop-shadow-md">
+    {icon}
+  </div>
+  <span class="text-white text-xs leading-tight px-1 group-focus:bg-[#000080] group-focus:text-white select-none">
+    {label}
+  </span>
+</button>

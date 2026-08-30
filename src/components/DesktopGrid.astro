@@ -1,0 +1,36 @@
+---
+import DesktopIcon from './DesktopIcon.astro';
+---
+
+<!-- Columna Izquierda: Sistemas y Carpetas Principales -->
+<div class="absolute top-4 left-4 flex flex-col gap-5 w-24 z-10">
+  <DesktopIcon 
+    icon="💻" 
+    label="About_Me.exe" 
+    targetWin="win-about" 
+  />
+  <DesktopIcon 
+    icon="📁" 
+    label="Projects" 
+    targetWin="win-projects" 
+  />
+</div>
+
+<!-- Columna Derecha: Accesos directos / Easter Eggs -->
+<div class="absolute top-4 right-4 flex flex-col gap-5 w-24 z-10 items-end">
+  <DesktopIcon 
+    icon="🎮" 
+    label="Half-Life 3.exe" 
+    targetWin="win-hl3" 
+  />
+  <DesktopIcon 
+    icon="📜" 
+    label="Game_Ideas.txt" 
+    targetWin="win-ideas" 
+  />
+  <DesktopIcon 
+    icon="🗑️" 
+    label="Recycle Bin" 
+    targetWin="win-trash" 
+  />
+</div>

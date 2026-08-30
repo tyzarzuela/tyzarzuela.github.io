@@ -1,0 +1,56 @@
+---
+import Window from './Window.astro';
+
+interface Props {
+  id: string;
+  title: string;
+  description: string;
+  whatIDid: string;
+  mediaUrl?: string;
+  githubUrl?: string;
+  demoUrl?: string;
+}
+
+const { id, title, description, whatIDid, mediaUrl, githubUrl, demoUrl } = Astro.props;
+---
+
+<Window 
+  id={`win-detail-${id}`} 
+  title={`🥽 ${title} - Details`}
+  defaultW="650px"
+  defaultH="450px"
+  initialTop="80px"
+  initialLeft="120px"
+>
+  <div class="p-3 bg-white win-border-inset flex-1 overflow-y-auto win-scroll space-y-4">
+    <h2 class="text-base font-bold text-[#000080]">{title}</h2>
+    
+    <!-- ÁREA MULTIMEDIA (Vídeo o Imagen) -->
+    <div class="w-full h-48 bg-black flex flex-col items-center justify-center text-white gap-2 win-border-inset overflow-hidden">
+      {mediaUrl ? (
+        <img src={mediaUrl} alt={title} class="w-full h-full object-cover" />
+      ) : (
+        <div class="flex flex-col items-center text-gray-400 gap-1">
+          <span class="text-3xl">🎥 / 🖼️</span>
+          <span class="text-xs">[ Añade una URL de imagen o vídeo en data/projects.ts ]</span>
+        </div>
+      )}
+    </div>
+
+    <!-- EXPLICACIÓN TÉCNICA -->
+    <div class="space-y-2 text-xs text-black">
+      <p><strong>Descripción:</strong> {description}</p>
+      <p><strong>Qué hice:</strong> {whatIDid}</p>
+    </div>
+
+    <!-- ENLACES EXTENSIONES -->
+    <div class="pt-2 border-t border-gray-300 flex gap-4">
+      {githubUrl && (
+        <a href={githubUrl} target="_blank" class="text-blue-600 underline text-xs font-bold">🔗 Ver Repositorio GitHub</a>
+      )}
+      {demoUrl && (
+        <a href={demoUrl} target="_blank" class="text-blue-600 underline text-xs font-bold">🚀 Ver Demo / Ejecutable</a>
+      )}
+    </div>
+  </div>
+</Window>

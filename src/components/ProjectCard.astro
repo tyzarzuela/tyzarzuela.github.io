@@ -1,0 +1,36 @@
+---
+interface Props {
+  id: string;
+  title: string;
+  tag: string;
+  shortDesc: string;
+}
+
+const { id, title, tag, shortDesc } = Astro.props;
+---
+
+<div class="border-b border-gray-300 pb-3 flex items-start gap-3">
+  <!-- Miniatura del Proyecto -->
+  <div 
+    class="w-16 h-14 bg-black flex justify-center items-center shrink-0 border border-black cursor-pointer"
+    onclick={`openWin('win-detail-${id}')`}
+  >
+    <div class="w-10 h-8 border-2 border-white relative flex justify-center items-center">
+      <div class="absolute top-1 left-1 w-2 h-2 rounded-full bg-white"></div>
+    </div>
+  </div>
+
+  <!-- Información -->
+  <div class="flex-1">
+    <div class="flex justify-between items-center">
+      <button 
+        onclick={`openWin('win-detail-${id}')`} 
+        class="font-bold text-[#000080] text-sm hover:underline text-left cursor-pointer"
+      >
+        {title}
+      </button>
+      <span class="text-xs bg-[#c0c0c0] px-2 py-0.5 win-border win-btn font-sans">{tag}</span>
+    </div>
+    <p class="text-xs text-gray-800 mt-1">{shortDesc}</p>
+  </div>
+</div>

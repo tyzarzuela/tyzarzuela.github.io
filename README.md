@@ -1,46 +1,43 @@
-# Astro Starter Kit: Basics
+# Hi there, I'm Tyler Zarzuela 👋 
+### Game Developer & Software Engineer
 
-```sh
-npm create astro@latest -- --template basics
-```
+Passionate about game engine architecture, VR interactions, C++, and level integration. 
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- 🎓 **Education:** Bachelor's Degree in Video Game Development (UCM)
+- 💼 **Experience:** Former Game Dev Intern @ NowAR Lab
+- 🌐 **Portfolio Website:** [tyzarzuela.github.io](https://tyzarzuela.github.io)
+- 📬 **Contact:** [tyzarzuelamor@gmail.com](mailto:tyzarzuelamor@gmail.com)
 
-## 🚀 Project Structure
+---
 
-Inside of your Astro project, you'll see the following folders and files:
+### 🚀 Featured Projects & Repositories
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src
-│   ├── assets
-│   │   └── astro.svg
-│   ├── components
-│   │   └── Welcome.astro
-│   ├── layouts
-│   │   └── Layout.astro
-│   └── pages
-│       └── index.astro
-└── package.json
-```
+#### 🛠️ Game Engines & Systems Architecture
+* **[EDEN - Custom Game Engine](https://github.com/tyzarzuela)**  
+  *2D/3D Game Engine built from scratch in C++. Features ECS, physics, custom rendering, and collision detection.*
+  
+#### 🥽 VR & AI Research
+* **[VR Interaction System via LLMs](https://github.com/tyzarzuela)**  
+  *Unreal Engine 5 VR prototype exploring dynamic in-game actions powered by open-source LLMs.*
 
-To learn more about the folder structure of an Astro project, refer to [our guide on project structure](https://docs.astro.build/en/basics/project-structure/).
+#### 🕹️ Gameplay & Jam Projects
+* **[Project Title 3 / Fork](https://github.com/tyzarzuela)**  
+  *Brief description of another game project, jam entry, or external framework fork you've contributed to.*
 
-## 🧞 Commands
+---
 
-All commands are run from the root of the project, from a terminal:
+### 💻 Technical Skills
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+| Domain | Technologies & Tools |
+| :--- | :--- |
+| **Languages** | C++, C#, C, Python, Java, JavaScript |
+| **Engines & VR** | Unreal Engine 5 (C++/Blueprints), Unity, Godot, Meta Quest |
+| **Tools & Tech** | Git, Visual Studio, VS Code, Blender, FMOD, RenderDoc |
 
-## 👀 Want to learn more?
+---
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+### 🔗 Connect with me
+
+[<img src="https://img.shields.io/badge/Portfolio-000000?style=for-the-badge&logo=About.me&logoColor=white" />](https://tyzarzuela.github.io)
+[<img src="https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white" />](https://linkedin.com)
+[<img src="https://img.shields.io/badge/Gmail-D14836?style=for-the-badge&logo=gmail&logoColor=white" />](mailto:czarzuelamor@gmail.com)

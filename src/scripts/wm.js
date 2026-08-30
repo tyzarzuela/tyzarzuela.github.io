@@ -1,30 +1,46 @@
 let zIndexCounter = 40;
 
-export function bringToFront(win) {
+window.bringToFront = function(win) {
   zIndexCounter++;
   win.style.zIndex = zIndexCounter;
-}
+};
 
-export function openWin(id) {
+window.openWin = function(id) {
   const win = document.getElementById(id);
   if (win) {
     win.classList.remove('hidden');
-    bringToFront(win);
+    window.bringToFront(win);
   }
-}
+};
 
-export function closeWin(id) {
+window.closeWin = function(id) {
   const win = document.getElementById(id);
-  if (win) win.classList.add('hidden');
-}
+  if (win) {
+    win.classList.add('hidden');
+  }
+};
 
-export function initWindowManager() {
+window.toggleMaximize = function(id, defaultW, defaultH, maxW, maxH) {
+  const win = document.getElementById(id);
+  if (!win) return;
+  if (win.style.width === maxW) {
+    win.style.width = defaultW;
+    win.style.height = defaultH;
+  } else {
+    win.style.width = maxW;
+    win.style.height = maxH;
+  }
+  window.bringToFront(win);
+};
+
+// Inicialización de arrastre con límites de pantalla
+function initWindowManager() {
   document.querySelectorAll('[id^="win-"]').forEach(win => {
     const header = win.querySelector('.window-header');
     let isDragging = false;
     let offsetX = 0, offsetY = 0;
 
-    win.addEventListener('mousedown', () => bringToFront(win));
+    win.addEventListener('mousedown', () => window.bringToFront(win));
 
     if (header) {
       header.addEventListener('mousedown', (e) => {
@@ -32,7 +48,7 @@ export function initWindowManager() {
         isDragging = true;
         offsetX = e.clientX - win.offsetLeft;
         offsetY = e.clientY - win.offsetTop;
-        bringToFront(win);
+        window.bringToFront(win);
       });
     }
 
@@ -52,6 +68,13 @@ export function initWindowManager() {
       }
     });
 
-    document.addEventListener('mouseup', () => { isDragging = false; });
+    document.addEventListener('mouseup', () => {
+      isDragging = false;
+    });
   });
+}
+
+// Se ejecuta al cargar el DOM
+if (typeof window !== 'undefined') {
+  window.addEventListener('DOMContentLoaded', initWindowManager);
 }

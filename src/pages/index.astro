@@ -40,15 +40,17 @@ import '../styles/global.css';
 				background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
 			}
 			
-			/* VENTANAS REDIMENSIONABLES DINÁMICAMENTE (RESIZE MANUAL) */
+			/* REDIMENSIONADO NATIVO CON LÍMITES MÍNIMOS Y MÁXIMOS */
 			.win-resizable {
 				resize: both;
 				overflow: hidden;
-				min-width: 320px;
-				min-height: 220px;
+				min-width: 350px;
+				min-height: 250px;
+				max-width: 95vw;
+				max-height: calc(100vh - 50px);
 			}
 
-			/* BARRA DE SCROLL ESTILO WINDOWS 98 */
+			/* BARRA DE SCROLL FIDELIDAD WINDOWS 98 */
 			.win-scroll::-webkit-scrollbar {
 				width: 16px;
 				height: 16px;
@@ -65,12 +67,6 @@ import '../styles/global.css';
 				border-left-color: #dfdfdf;
 				border-right-color: #000000;
 				border-bottom-color: #000000;
-			}
-			.win-scroll::-webkit-scrollbar-thumb:active {
-				border-top-color: #000000;
-				border-left-color: #000000;
-				border-right-color: #dfdfdf;
-				border-bottom-color: #dfdfdf;
 			}
 		</style>
 	</head>
@@ -113,7 +109,7 @@ import '../styles/global.css';
 			<div class="window-header title-bar-gradient text-white px-1 py-[2px] flex justify-between items-center font-bold text-sm cursor-move shrink-0">
 				<span class="flex items-center gap-1 pointer-events-none">💻 About_Me.exe</span>
 				<div class="flex gap-[2px]">
-					<button onclick="expandWin('win-about')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">◻</button>
+					<button onclick="toggleMaximize('win-about', '380px', '300px', '550px', '400px')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">◻</button>
 					<button onclick="closeWin('win-about')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">X</button>
 				</div>
 			</div>
@@ -138,65 +134,77 @@ import '../styles/global.css';
 			</div>
 		</div>
 
-		<!-- VENTANA 2: PROJECTS (AMPLIADA Y CON MÁS CONTENIDO) -->
-		<div id="win-projects" class="win-resizable hidden absolute top-16 left-28 w-[680px] h-[480px] bg-[#c0c0c0] win-border p-[2px] shadow-2xl z-30 flex flex-col">
+		<!-- VENTANA 2: PROJECTS (ESTILO EXACTO A TU IMAGEN) -->
+		<div id="win-projects" class="win-resizable hidden absolute top-12 left-20 w-[600px] h-[380px] bg-[#c0c0c0] win-border p-[2px] shadow-2xl z-30 flex flex-col">
 			<div class="window-header title-bar-gradient text-white px-1 py-[2px] flex justify-between items-center font-bold text-sm cursor-move shrink-0">
 				<span class="flex items-center gap-1 pointer-events-none">📁 C:\Portfolio\Projects</span>
 				<div class="flex gap-[2px]">
-					<button onclick="expandWin('win-projects')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">◻</button>
+					<button onclick="toggleMaximize('win-projects', '600px', '380px', '850px', '550px')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">◻</button>
 					<button onclick="closeWin('win-projects')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">X</button>
 				</div>
 			</div>
 
-			<div class="flex gap-4 px-2 py-1 bg-[#c0c0c0] border-b border-gray-400 text-xs shrink-0">
+			<div class="flex gap-4 px-2 py-1 bg-[#c0c0c0] text-xs shrink-0">
 				<span class="hover:bg-blue-800 hover:text-white px-1 cursor-pointer">File</span>
 				<span class="hover:bg-blue-800 hover:text-white px-1 cursor-pointer">Edit</span>
 				<span class="hover:bg-blue-800 hover:text-white px-1 cursor-pointer">View</span>
 			</div>
 			
-			<div class="p-3 m-1 bg-white win-border-inset flex-1 overflow-y-auto win-scroll space-y-4">
+			<div class="p-3 bg-white win-border-inset flex-1 overflow-y-auto win-scroll space-y-4">
 				
-				<!-- Proyecto 1 -->
-				<div class="border-b border-gray-300 pb-3">
-					<div class="flex justify-between items-center mb-1">
-						<span class="font-bold text-[#000080] text-base flex items-center gap-2">🥽 VR LLM Interaction System</span>
-						<span class="text-xs bg-[#c0c0c0] px-2 py-0.5 win-border-inset">UE5 / C++</span>
+				<!-- Tarjeta 1 (Fidelidad a la imagen) -->
+				<div class="border-b border-gray-300 pb-3 flex items-start gap-3">
+					<div class="w-16 h-14 bg-black flex justify-center items-center shrink-0 border border-black">
+						<!-- Icono de imagen placeholder exacto -->
+						<div class="w-10 h-8 border-2 border-white relative flex justify-center items-center">
+							<div class="absolute top-1 left-1 w-2 h-2 rounded-full bg-white"></div>
+							<div class="absolute bottom-0 w-full h-3 bg-white clip-path-triangle"></div>
+						</div>
 					</div>
-					<p class="text-xs mb-2 text-gray-800">Bachelor thesis project. VR game prototype executing dynamic open-source LLM prompts through custom C++ and Blueprints architecture.</p>
-					<a href="https://github.com/tyzarzuela" target="_blank" class="text-blue-600 underline text-xs font-bold">Explore Source Code &rarr;</a>
+					<div class="flex-1">
+						<div class="flex justify-between items-center">
+							<span class="font-bold text-[#000080] text-sm">VR LLM Interaction System</span>
+							<span class="text-xs bg-[#c0c0c0] px-2 py-0.5 win-border win-btn font-sans">UE5 / C++</span>
+						</div>
+						<p class="text-xs text-gray-800 mt-1">Bachelor thesis project. VR game prototype executing dynamic open-source LLM prompts through custom Blueprints.</p>
+						<a href="https://github.com/tyzarzuela" target="_blank" class="text-blue-600 underline text-xs font-bold block mt-1">Explore Source Code &rarr;</a>
+					</div>
 				</div>
 
-				<!-- Proyecto 2 -->
-				<div class="border-b border-gray-300 pb-3">
-					<div class="flex justify-between items-center mb-1">
-						<span class="font-bold text-[#000080] text-base flex items-center gap-2">⚙️ EDEN Custom Engine</span>
-						<span class="text-xs bg-[#c0c0c0] px-2 py-0.5 win-border-inset">C++ / ECS</span>
+				<!-- Tarjeta 2 -->
+				<div class="border-b border-gray-300 pb-3 flex items-start gap-3">
+					<div class="w-16 h-14 bg-black flex justify-center items-center shrink-0 border border-black">
+						<div class="w-10 h-8 border-2 border-white relative flex justify-center items-center">
+							<div class="absolute top-1 left-1 w-2 h-2 rounded-full bg-white"></div>
+						</div>
 					</div>
-					<p class="text-xs mb-2 text-gray-800">2D/3D game engine built from scratch in C++. Features modular Entity Component System (ECS), custom OpenGL rendering pipeline, and physics integration.</p>
-					<a href="https://github.com/tyzarzuela" target="_blank" class="text-blue-600 underline text-xs font-bold">Explore Source Code &rarr;</a>
+					<div class="flex-1">
+						<div class="flex justify-between items-center">
+							<span class="font-bold text-[#000080] text-sm">EDEN Custom Engine</span>
+							<span class="text-xs bg-[#c0c0c0] px-2 py-0.5 win-border win-btn font-sans">C++ / ECS</span>
+						</div>
+						<p class="text-xs text-gray-800 mt-1">2D/3D game engine built from scratch in C++. Features modular ECS, custom rendering pipeline, and physics.</p>
+						<a href="https://github.com/tyzarzuela" target="_blank" class="text-blue-600 underline text-xs font-bold block mt-1">Explore Source Code &rarr;</a>
+					</div>
 				</div>
 
-				<!-- Proyecto 3 -->
-				<div class="border-b border-gray-300 pb-3">
-					<div class="flex justify-between items-center mb-1">
-						<span class="font-bold text-[#000080] text-base flex items-center gap-2">🤖 AI Behavior Tree & Pathfinder</span>
-						<span class="text-xs bg-[#c0c0c0] px-2 py-0.5 win-border-inset">C++ / Algorithms</span>
+				<!-- Tarjeta 3 -->
+				<div class="border-b border-gray-300 pb-3 flex items-start gap-3">
+					<div class="w-16 h-14 bg-black flex justify-center items-center shrink-0 border border-black">
+						<div class="w-10 h-8 border-2 border-white relative flex justify-center items-center">
+							<div class="absolute top-1 left-1 w-2 h-2 rounded-full bg-white"></div>
+						</div>
 					</div>
-					<p class="text-xs mb-2 text-gray-800">Custom A* pathfinding and hierarchical finite state machines for complex NPC tactical decision-making in real-time environments.</p>
-					<a href="https://github.com/tyzarzuela" target="_blank" class="text-blue-600 underline text-xs font-bold">Explore Source Code &rarr;</a>
+					<div class="flex-1">
+						<div class="flex justify-between items-center">
+							<span class="font-bold text-[#000080] text-sm">Gameplay Prototypes</span>
+							<span class="text-xs bg-[#c0c0c0] px-2 py-0.5 win-border win-btn font-sans">Unreal / Unity</span>
+						</div>
+						<p class="text-xs text-gray-800 mt-1">Collection of experimental mechanics, AI behavior trees, and procedural shaders.</p>
+					</div>
 				</div>
 
-				<!-- Proyecto 4 -->
-				<div class="border-b border-gray-300 pb-3">
-					<div class="flex justify-between items-center mb-1">
-						<span class="font-bold text-[#000080] text-base flex items-center gap-2">🕹️ Arcade Physics & Shaders Sandbox</span>
-						<span class="text-xs bg-[#c0c0c0] px-2 py-0.5 win-border-inset">HLSL / Unity</span>
-					</div>
-					<p class="text-xs mb-2 text-gray-800">Collection of pixel-art post-processing filters, CRT screen distortion shaders, and custom rigid-body arcade dynamics.</p>
-					<a href="https://github.com/tyzarzuela" target="_blank" class="text-blue-600 underline text-xs font-bold">Explore Source Code &rarr;</a>
-				</div>
-
-				<!-- Secret Note -->
+				<!-- Tarjeta 4 -->
 				<div class="p-3 bg-yellow-100 border border-yellow-400 rounded flex items-center gap-3">
 					<span class="text-xl">⚠️</span>
 					<div>
@@ -235,7 +243,7 @@ import '../styles/global.css';
 			</div>
 		</div>
 
-		<!-- CONTROL DE VENTANAS Y DRAG & DROP -->
+		<!-- LÓGICA DE INTERACCIÓN -->
 		<script is:inline>
 			let zIndexCounter = 40;
 
@@ -254,18 +262,15 @@ import '../styles/global.css';
 				document.getElementById(id).classList.add('hidden');
 			}
 
-			// Botón de ampliar proporcionalmente (+200px)
-			function expandWin(id) {
+			// Botón de alternancia de tamaño grande/normal
+			function toggleMaximize(id, defaultW, defaultH, maxW, maxH) {
 				const win = document.getElementById(id);
-				const currentWidth = win.offsetWidth;
-				const currentHeight = win.offsetHeight;
-				
-				if (currentWidth < 900) {
-					win.style.width = (currentWidth + 200) + 'px';
-					win.style.height = (currentHeight + 150) + 'px';
+				if (win.style.width === maxW) {
+					win.style.width = defaultW;
+					win.style.height = defaultH;
 				} else {
-					win.style.width = '680px';
-					win.style.height = '480px';
+					win.style.width = maxW;
+					win.style.height = maxH;
 				}
 				bringToFront(win);
 			}
@@ -274,7 +279,7 @@ import '../styles/global.css';
 				document.getElementById('start-menu').classList.toggle('hidden');
 			}
 
-			// SISTEMA DE ARRASTRE
+			// SISTEMA DE ARRASTRE DE VENTANAS
 			document.querySelectorAll('[id^="win-"]').forEach(win => {
 				const header = win.querySelector('.window-header');
 				let isDragging = false;

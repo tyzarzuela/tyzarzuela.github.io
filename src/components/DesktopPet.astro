@@ -1,0 +1,66 @@
+---
+---
+<div 
+  id="desktop-pet" 
+  class="fixed z-40 select-none cursor-pointer text-3xl pointer-events-auto"
+  style="bottom: 40px; left: 0px;"
+  title="¡Tu mascota virtual! Haz clic para interactuar"
+>
+  🐑
+</div>
+
+<style>
+  @keyframes stepBounce {
+    0%, 100% { transform: translateY(0) var(--pet-scale); }
+    50% { transform: translateY(-4px) var(--pet-scale); }
+  }
+
+  .walking {
+    animation: stepBounce 0.4s infinite ease-in-out;
+  }
+</style>
+
+<script is:inline>
+  (function initWalkingPet() {
+    const pet = document.getElementById('desktop-pet');
+    if (!pet) return;
+
+    let posX = 50;
+    let direction = 1; // 1 = derecha, -1 = izquierda
+    const speed = 0.8; // Velocidade suave y natural
+
+    // Inicializamos mirando hacia la derecha correctamente
+    pet.style.setProperty('--pet-scale', 'scaleX(-1)');
+    pet.classList.add('walking');
+
+    function animatePet() {
+      const screenWidth = window.innerWidth;
+      const petWidth = 45;
+
+      posX += speed * direction;
+
+      // Si llega al borde derecho, gira hacia la izquierda
+      if (posX > screenWidth - petWidth) {
+        direction = -1;
+        pet.style.setProperty('--pet-scale', 'scaleX(1)');
+      } 
+      // Si llega al borde izquierdo, gira hacia la derecha
+      else if (posX < 0) {
+        direction = 1;
+        pet.style.setProperty('--pet-scale', 'scaleX(-1)');
+      }
+
+      pet.style.left = posX + 'px';
+      requestAnimationFrame(animatePet);
+    }
+
+    requestAnimationFrame(animatePet);
+
+    // Easter egg al hacer clic
+    pet.addEventListener('click', () => {
+      const sounds = ['¡Baaa! 🐑', '¡Caminando hacia la entrevista con CD PROJEKT RED!', '¡Windows 98 vive!', '¡Explorando el portfolio de Claudia!'];
+      const randomQuote = sounds[Math.floor(Math.random() * sounds.length)];
+      alert(`💬 Tu mascota dice:\n"${randomQuote}"`);
+    });
+  })();
+</script>

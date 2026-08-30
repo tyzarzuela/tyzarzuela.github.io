@@ -1,14 +1,125 @@
 ---
 ---
-
-<div class="fixed bottom-0 left-0 w-full h-10 bg-[#c0c0c0] border-t-2 border-white flex justify-between items-center px-1 z-50">
-  <div class="flex items-center gap-2">
-    <button id="start-btn" class="h-8 px-2 bg-[#c0c0c0] win-border win-btn flex items-center gap-2 font-bold text-black cursor-pointer">
-      <span class="text-base">🪟</span>
-      <span>Start</span>
+<div class="fixed bottom-0 left-0 right-0 h-10 bg-[#c0c0c0] win-border flex items-center justify-between px-2 z-50 select-none">
+  <!-- Botón Start -->
+  <div class="relative">
+    <button 
+      id="start-btn"
+      onclick="toggleStartMenu()"
+      class="flex items-center gap-1.5 bg-[#c0c0c0] px-3 py-1 win-border win-btn font-bold text-xs cursor-pointer active:translate-y-0.5"
+    >
+      <span class="text-sm">🪟</span> Start
     </button>
+
+    <!-- Menú Desplegable -->
+    <div 
+      id="start-menu" 
+      class="hidden absolute bottom-full left-0 mb-0 w-64 bg-[#c0c0c0] win-border shadow-2xl flex z-50 overflow-hidden"
+    >
+      <div class="bg-[#000080] w-8 flex items-center justify-center shrink-0 relative overflow-hidden">
+        <span class="text-white font-bold text-xs -rotate-90 whitespace-nowrap tracking-widest select-none block transform translate-y-2">Windows 98</span>
+      </div>
+
+      <div class="flex-1 py-1 text-xs">
+        <button onclick="openWin('win-about'); toggleStartMenu();" class="w-full text-left px-3 py-2 hover:bg-[#000080] hover:text-white flex items-center gap-2 cursor-pointer">
+          <span>💻</span> About Me (CV)
+        </button>
+        <button onclick="openWin('win-projects'); toggleStartMenu();" class="w-full text-left px-3 py-2 hover:bg-[#000080] hover:text-white flex items-center gap-2 cursor-pointer">
+          <span>📁</span> Projects Folder
+        </button>
+        
+        <div class="border-t border-gray-400 my-1"></div>
+
+        <a 
+          href="mailto:czarzuelamor@gmail.com?subject=Contacto%20Portfolio&body=Hola%20Claudia," 
+          target="_blank"
+          onclick="toggleStartMenu();" 
+          class="w-full text-left px-3 py-2 hover:bg-[#000080] hover:text-white flex items-center gap-2 cursor-pointer block"
+        >
+          <span>✉️</span> Send Email (Direct Mail)
+        </a>
+        
+        <button onclick="triggerHotline(); toggleStartMenu();" class="w-full text-left px-3 py-2 hover:bg-[#000080] hover:text-white flex items-center gap-2 cursor-pointer">
+          <span>👾</span> Developer Hotline 98
+        </button>
+
+        <div class="border-t border-gray-400 my-1"></div>
+        
+        <button onclick="triggerSelfDestruct(); toggleStartMenu();" class="w-full text-left px-3 py-2 hover:bg-[#000080] hover:text-white flex items-center gap-2 cursor-pointer">
+          <span>💥</span> Do NOT Press (Overclock)
+        </button>
+      </div>
+    </div>
   </div>
-  <div class="h-7 px-3 bg-[#c0c0c0] win-border-inset flex items-center text-xs text-black" id="win-clock">
+
+  <!-- Reproductor de Audio retro estilo Winamp/Spotify en la barra -->
+  <div class="flex items-center gap-2 bg-[#000000] text-[#00ff00] px-2 py-1 win-border-inset font-mono text-[11px] h-7">
+    <button id="music-btn" onclick="toggleAudio()" class="text-white hover:text-yellow-300 font-bold cursor-pointer">
+      ▶️
+    </button>
+    <div class="w-32 truncate">
+      <span id="music-track">The Smiths - Job Hunt</span>
+    </div>
+  </div>
+
+  <!-- Reloj digital -->
+  <div class="bg-[#c0c0c0] win-border-inset px-3 py-0.5 text-xs font-mono font-bold text-black" id="clock">
     12:00 PM
   </div>
 </div>
+
+<!-- Audio oculto -->
+<audio id="bg-music" loop src="https://ia801309.us.archive.org/28/items/TheSmithsHeavenKnowsImMiserableNow/The%20Smiths%20-%20Heaven%20Knows%20I%27m%20Miserable%20Now.mp3"></audio>
+
+<script is:inline>
+  window.toggleStartMenu = function() {
+    const menu = document.getElementById('start-menu');
+    if (menu) menu.classList.toggle('hidden');
+  };
+
+  document.addEventListener('click', (e) => {
+    const menu = document.getElementById('start-menu');
+    const btn = document.getElementById('start-btn');
+    if (menu && !menu.classList.contains('hidden')) {
+      if (!menu.contains(e.target) && !btn.contains(e.target)) {
+        menu.classList.add('hidden');
+      }
+    }
+  });
+
+  function updateClock() {
+    const now = new Date();
+    const timeStr = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    const clockEl = document.getElementById('clock');
+    if (clockEl) clockEl.innerText = timeStr;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  window.triggerHotline = function() {
+    alert("☎️ CONEXIÓN DE DIAL-UP ESTABLECIDA:\n\n'Has contactado a Claudia. Si eres de CD Projekt RED o buscas un dev en C++/UE5, escribe a czarzuelamor@gmail.com'");
+  };
+
+  window.triggerSelfDestruct = function() {
+    alert("⚠️ ALERTA DE SISTEMA: Procesador overclockeado al 999%.\n\n¡Gracias por visitar el Portfolio OS!");
+  };
+
+  function toggleAudio() {
+    const audio = document.getElementById('bg-music');
+    const btn = document.getElementById('music-btn');
+    const track = document.getElementById('music-track');
+
+    if (audio.paused) {
+      audio.play().then(() => {
+        btn.innerText = '⏸️';
+        track.innerText = '🎵 Looking for a job...';
+      }).catch(() => {
+        alert("Haz clic de nuevo para permitir la reproducción de audio.");
+      });
+    } else {
+      audio.pause();
+      btn.innerText = '▶️';
+      track.innerText = 'The Smiths - Paused';
+    }
+  }
+</script>

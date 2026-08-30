@@ -1,36 +1,70 @@
 ---
-import DesktopIcon from './DesktopIcon.astro';
 ---
+<!-- Contenedor principal del escritorio -->
+<div class="absolute inset-0 bottom-10 p-6 pointer-events-none z-10 flex justify-between flex-col sm:flex-row">
+  
+  <!-- Lado Izquierdo: Fila superior (About Me + Projects) y Columna de Proyectos destacados -->
+  <div class="flex flex-col gap-6 pointer-events-auto">
+    
+    <!-- Fila Superior (About Me y Projects en línea) -->
+    <div class="flex items-center gap-4">
+      <button onclick="openWin('win-about')" class="flex flex-col items-center justify-center w-20 p-2 text-white hover:bg-blue-900/40 border border-transparent hover:border-blue-300/50 rounded cursor-pointer group">
+        <div class="text-3xl mb-1 group-hover:scale-105 transition-transform">💻</div>
+        <span class="text-[11px] text-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] leading-tight font-medium">About_Me.exe</span>
+      </button>
 
-<!-- Columna Izquierda: Sistemas y Carpetas Principales -->
-<div class="absolute top-4 left-4 flex flex-col gap-5 w-24 z-10">
-  <DesktopIcon 
-    icon="💻" 
-    label="About_Me.exe" 
-    targetWin="win-about" 
-  />
-  <DesktopIcon 
-    icon="📁" 
-    label="Projects" 
-    targetWin="win-projects" 
-  />
-</div>
+      <button onclick="openWin('win-projects')" class="flex flex-col items-center justify-center w-20 p-2 text-white hover:bg-blue-900/40 border border-transparent hover:border-blue-300/50 rounded cursor-pointer group">
+        <div class="text-3xl mb-1 group-hover:scale-105 transition-transform">📁</div>
+        <span class="text-[11px] text-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] leading-tight font-medium">Projects</span>
+      </button>
+    </div>
 
-<!-- Columna Derecha: Accesos directos / Easter Eggs -->
-<div class="absolute top-4 right-4 flex flex-col gap-5 w-24 z-10 items-end">
-  <DesktopIcon 
-    icon="🎮" 
-    label="Half-Life 3.exe" 
-    targetWin="win-hl3" 
-  />
-  <DesktopIcon 
-    icon="📜" 
-    label="Game_Ideas.txt" 
-    targetWin="win-ideas" 
-  />
-  <DesktopIcon 
-    icon="🗑️" 
-    label="Recycle Bin" 
-    targetWin="win-trash" 
-  />
+    <!-- Espacio y Columna de Proyectos Destacados (Más abajo) -->
+    <div class="flex flex-col gap-3 pt-4">
+      <span class="text-[10px] uppercase font-bold text-gray-200 tracking-wider opacity-80 px-1">Featured Projects</span>
+      
+      <div class="grid grid-cols-2 gap-3 w-max">
+        <button onclick="openWin('win-detail-vr-llm')" class="flex flex-col items-center justify-center w-20 p-1.5 text-white hover:bg-blue-900/40 border border-transparent hover:border-blue-300/50 rounded cursor-pointer group">
+          <div class="text-2xl mb-1 group-hover:scale-105 transition-transform">🥽</div>
+          <span class="text-[11px] text-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] leading-tight">VR LLM</span>
+        </button>
+
+        <button onclick="openWin('win-detail-eden-engine')" class="flex flex-col items-center justify-center w-20 p-1.5 text-white hover:bg-blue-900/40 border border-transparent hover:border-blue-300/50 rounded cursor-pointer group">
+          <div class="text-2xl mb-1 group-hover:scale-105 transition-transform">⚙️</div>
+          <span class="text-[11px] text-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] leading-tight">EDEN Engine</span>
+        </button>
+
+        <button onclick="openWin('win-detail-jam-project-1')" class="flex flex-col items-center justify-center w-20 p-1.5 text-white hover:bg-blue-900/40 border border-transparent hover:border-blue-300/50 rounded cursor-pointer group">
+          <div class="text-2xl mb-1 group-hover:scale-105 transition-transform">⏳</div>
+          <span class="text-[11px] text-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] leading-tight">Chrono Rift</span>
+        </button>
+
+        <button onclick="openWin('win-projects')" class="flex flex-col items-center justify-center w-20 p-1.5 text-white hover:bg-blue-900/40 border border-transparent hover:border-blue-300/50 rounded cursor-pointer group">
+          <div class="text-2xl mb-1 group-hover:scale-105 transition-transform">🕹️</div>
+          <span class="text-[11px] text-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] leading-tight">UE Sandbox</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Lado Derecho: Columna de Juegos Favoritos (Abajo a la derecha) -->
+  <div class="flex flex-col justify-end items-end gap-3 pointer-events-auto pb-2">
+    <span class="text-[10px] uppercase font-bold text-gray-200 tracking-wider opacity-80 px-1">Fav Games</span>
+    
+    <button onclick="alert('🎮 Juego Favorito #1: Outer Wilds\n\n¡Exploración espacial y curiosidad!')" class="flex flex-col items-center justify-center w-20 p-1.5 text-white hover:bg-blue-900/40 border border-transparent hover:border-blue-300/50 rounded cursor-pointer group">
+      <div class="text-3xl mb-1 group-hover:scale-105 transition-transform">🌌</div>
+      <span class="text-[11px] text-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] leading-tight font-medium">Outer Wilds</span>
+    </button>
+
+    <button onclick="alert('🎮 Juego Favorito #2: Elden Ring\n\nDiseño de niveles excepcional.')" class="flex flex-col items-center justify-center w-20 p-1.5 text-white hover:bg-blue-900/40 border border-transparent hover:border-blue-300/50 rounded cursor-pointer group">
+      <div class="text-3xl mb-1 group-hover:scale-105 transition-transform">⚔️</div>
+      <span class="text-[11px] text-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] leading-tight font-medium">Elden Ring</span>
+    </button>
+
+    <button onclick="alert('🎮 Juego Favorito #3: Portal 2\n\nExcelente narrativa y mecánica de puzles.')" class="flex flex-col items-center justify-center w-20 p-1.5 text-white hover:bg-blue-900/40 border border-transparent hover:border-blue-300/50 rounded cursor-pointer group">
+      <div class="text-3xl mb-1 group-hover:scale-105 transition-transform">🌀</div>
+      <span class="text-[11px] text-center drop-shadow-[0_1px_2px_rgba(0,0,0,0.9)] leading-tight font-medium">Portal 2</span>
+    </button>
+  </div>
+
 </div>

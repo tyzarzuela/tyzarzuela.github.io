@@ -8,13 +8,16 @@ import '../styles/global.css';
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Claudia Zarzuela | Game Developer & Software Engineer</title>
-	</head>
-	<body class="bg-slate-950 text-slate-100 font-sans antialiased selection:bg-emerald-500 selection:text-slate-950 min-h-screen">
 		
-		<!-- NAVIGATION -->
-		<nav class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/90 border-b border-slate-800">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+	</head>
+	<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-emerald-500 selection:text-slate-950">
+		
+		<nav class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/90 border-b border-emerald-900/50">
 			<div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
-				<span class="font-bold text-lg tracking-wider text-emerald-400">CZ.DEV</span>
+				<span class="font-bold text-sm tracking-widest text-emerald-400 font-['Press_Start_2P']">CZ.DEV</span>
 				<div class="flex gap-6 text-sm font-medium text-slate-300">
 					<a href="#projects" class="hover:text-emerald-400 transition-colors">Projects</a>
 					<a href="#experience" class="hover:text-emerald-400 transition-colors">Experience</a>
@@ -24,166 +27,148 @@ import '../styles/global.css';
 			</div>
 		</nav>
 
-		<!-- HERO SECTION -->
-		<section class="max-w-5xl mx-auto px-6 py-20 flex flex-col items-start gap-6">
-			<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-semibold tracking-wide">
-				<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-				GAME DEVELOPER & SOFTWARE ENGINEER
+		<section class="max-w-5xl mx-auto px-6 py-16 flex flex-col items-start gap-6 relative overflow-hidden">
+			<div class="w-full flex justify-between items-center">
+				<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs font-semibold">
+					<span class="w-2 h-2 rounded-full bg-emerald-400 animate-ping"></span>
+					GAME DEVELOPER & SOFTWARE ENGINEER
+				</div>
+				<div class="flex items-center gap-1 text-emerald-400 text-xs font-['Press_Start_2P']">
+					<span class="text-rose-500">❤️</span>
+					<span class="text-rose-500">❤️</span>
+					<span class="text-rose-500">❤️</span>
+					<span class="text-slate-500 ml-2">3 LIVES</span>
+				</div>
 			</div>
+
 			<h1 class="text-4xl md:text-6xl font-extrabold tracking-tight leading-tight">
 				Claudia Zarzuela Amor <br />
 				<span class="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 via-teal-300 to-cyan-400">
 					Building Immersive Gameplay & Systems
 				</span>
 			</h1>
+
 			<p class="text-slate-400 text-lg md:text-xl max-w-2xl leading-relaxed">
-				Passionate game developer with a strong technical foundation in game engines, level integration, C++, and AI. Experienced in cross-platform systems, VR interactions, and agile team environments.
+				Passionate game developer with a strong technical foundation in game engines, level integration, C++, and AI interactions.
 			</p>
 			
 			<div class="flex flex-wrap gap-4 pt-4">
-				<a href="#projects" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold transition-all shadow-lg shadow-emerald-500/20">
-					View Featured Projects
+				<a href="#projects" class="px-6 py-3 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold transition-all shadow-lg shadow-emerald-500/20 flex items-center gap-2">
+					<span>🎮</span> View Projects
 				</a>
-				<a href="https://github.com/tyzarzuela" target="_blank" class="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-800 text-slate-200 font-semibold transition-all">
-					GitHub Profile
+				<a href="https://github.com/tyzarzuela" target="_blank" class="px-6 py-3 rounded-xl bg-slate-900 hover:bg-slate-800 border border-emerald-900/50 text-emerald-400 font-semibold transition-all flex items-center gap-2">
+					<span>👾</span> GitHub Profile
 				</a>
 			</div>
 		</section>
 
-		<!-- FEATURED PROJECTS SECTION -->
-		<section id="projects" class="max-w-5xl mx-auto px-6 py-16 border-t border-slate-800/60">
-			<h2 class="text-2xl md:text-3xl font-bold mb-2">Key Coursework & Research Projects</h2>
-			<p class="text-slate-400 mb-10">Highlighting engine development, AI integrations, and technical mechanics.</p>
+		<section id="projects" class="max-w-5xl mx-auto px-6 py-16 border-t border-slate-800/80">
+			<div class="flex items-center justify-between mb-8">
+				<h2 class="text-xl md:text-2xl font-bold font-['Press_Start_2P'] text-emerald-400 tracking-wider">
+					SELECTED_PROJECTS <span class="animate-pulse">_</span>
+				</h2>
+				<span class="text-xs font-['Press_Start_2P'] text-slate-500">INSERT COIN [10]</span>
+			</div>
 
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-8">
 				
-				<!-- Project 1: Bachelor Thesis -->
-				<div class="group bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden hover:border-emerald-500/50 transition-all duration-300">
-					<div class="aspect-video bg-slate-800/80 relative overflow-hidden flex items-center justify-center text-slate-500 font-mono text-sm border-b border-slate-800">
-						[ VR Gameplay / LLM Demo GIF ]
+				<div class="group bg-slate-900/80 border-2 border-emerald-900 hover:border-emerald-400 rounded-2xl overflow-hidden transition-all duration-300 shadow-xl relative">
+					<div class="bg-slate-950 p-3 border-b border-emerald-900 flex justify-between items-center text-xs font-mono text-emerald-500">
+						<span>SYSTEM: UNREAL ENGINE 5</span>
+						<span class="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
+					</div>
+					<div class="aspect-video bg-black relative p-6 flex flex-col justify-between font-mono text-xs text-slate-300 overflow-hidden">
+						<div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] pointer-events-none opacity-40"></div>
+						<p class="text-emerald-400">&gt; Loading VR Interaction Module...</p>
+						<p class="text-slate-400 text-sm">VR Interaction System using LLMs. Dynamic Blueprint integration.</p>
+						<div class="flex gap-2 text-emerald-300 font-['Press_Start_2P'] text-[10px]">
+							[PLAY DEMO]
+						</div>
 					</div>
 					<div class="p-6">
-						<div class="flex gap-2 mb-3 flex-wrap">
-							<span class="px-2.5 py-1 rounded-md bg-purple-500/10 text-purple-400 text-xs font-medium">Unreal Engine 5</span>
-							<span class="px-2.5 py-1 rounded-md bg-emerald-500/10 text-emerald-400 text-xs font-medium">VR / Meta Quest</span>
-							<span class="px-2.5 py-1 rounded-md bg-cyan-500/10 text-cyan-400 text-xs font-medium">LLM / Blueprints</span>
-						</div>
-						<h3 class="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors">VR Interaction System Using LLMs</h3>
+						<h3 class="text-xl font-bold mb-2 text-slate-100 group-hover:text-emerald-400 transition-colors">
+							VR Interaction System (LLM)
+						</h3>
 						<p class="text-slate-400 text-sm mb-4">
-							Bachelor Thesis project. Developed an UE5 VR game prototype where all in-game interactions are dynamically generated by open-source LLMs integrated via Blueprints. Analyzed UX feedback dynamics and prompt responses.
+							Bachelor thesis research. UE5 game prototype running dynamic open-source LLM prompts through Blueprints.
 						</p>
-						<div class="flex gap-4 text-xs font-semibold">
-							<a href="https://github.com/tyzarzuela" target="_blank" class="text-emerald-400 hover:underline">Repository →</a>
-						</div>
+						<a href="https://github.com/tyzarzuela" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-emerald-400 hover:underline font-mono">
+							REPOSITORY_URL &rarr;
+						</a>
 					</div>
 				</div>
 
-				<!-- Project 2: Custom Engine EDEN -->
-				<div class="group bg-slate-900/60 border border-slate-800 rounded-2xl overflow-hidden hover:border-emerald-500/50 transition-all duration-300">
-					<div class="aspect-video bg-slate-800/80 relative overflow-hidden flex items-center justify-center text-slate-500 font-mono text-sm border-b border-slate-800">
-						[ Engine Architecture / Render GIF ]
+				<div class="group bg-slate-900/80 border-2 border-cyan-900 hover:border-cyan-400 rounded-2xl overflow-hidden transition-all duration-300 shadow-xl relative">
+					<div class="bg-slate-950 p-3 border-b border-cyan-900 flex justify-between items-center text-xs font-mono text-cyan-500">
+						<span>SYSTEM: C++ ARCHITECTURE</span>
+						<span class="w-2 h-2 rounded-full bg-cyan-400 animate-pulse"></span>
+					</div>
+					<div class="aspect-video bg-black relative p-6 flex flex-col justify-between font-mono text-xs text-slate-300 overflow-hidden">
+						<div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.25)_50%)] bg-[length:100%_4px] pointer-events-none opacity-40"></div>
+						<p class="text-cyan-400">&gt; Init EDEN Engine Core...</p>
+						<p class="text-slate-400 text-sm">ECS, Render Pipeline & Physics System active.</p>
+						<div class="flex gap-2 text-cyan-300 font-['Press_Start_2P'] text-[10px]">
+							[STATUS: 60 FPS]
+						</div>
 					</div>
 					<div class="p-6">
-						<div class="flex gap-2 mb-3 flex-wrap">
-							<span class="px-2.5 py-1 rounded-md bg-blue-500/10 text-blue-400 text-xs font-medium">C++</span>
-							<span class="px-2.5 py-1 rounded-md bg-indigo-500/10 text-indigo-400 text-xs font-medium">Engine Architecture</span>
-							<span class="px-2.5 py-1 rounded-md bg-teal-500/10 text-teal-400 text-xs font-medium">ECS</span>
-						</div>
-						<h3 class="text-xl font-bold mb-2 group-hover:text-emerald-400 transition-colors">EDEN - Custom Game Engine</h3>
+						<h3 class="text-xl font-bold mb-2 text-slate-100 group-hover:text-cyan-400 transition-colors">
+							EDEN - Custom Engine
+						</h3>
 						<p class="text-slate-400 text-sm mb-4">
-							Built a 2D/3D game engine from scratch in C++. Engineered core systems including graphics rendering, physics simulation, collision detection, input management, and a modular Entity-Component System (ECS).
+							2D/3D game engine built from scratch in C++. Custom rendering, ECS architecture, and physics.
 						</p>
-						<div class="flex gap-4 text-xs font-semibold">
-							<a href="https://github.com/tyzarzuela" target="_blank" class="text-emerald-400 hover:underline">Repository →</a>
-						</div>
+						<a href="https://github.com/tyzarzuela" target="_blank" class="inline-flex items-center gap-2 text-xs font-bold text-cyan-400 hover:underline font-mono">
+							REPOSITORY_URL &rarr;
+						</a>
 					</div>
 				</div>
 
 			</div>
 		</section>
 
-		<!-- EXPERIENCE & EDUCATION SECTION -->
-		<section id="experience" class="max-w-5xl mx-auto px-6 py-16 border-t border-slate-800/60">
-			<h2 class="text-2xl md:text-3xl font-bold mb-8">Work Experience & Education</h2>
-			
-			<div class="space-y-8">
-				<!-- Work Experience -->
-				<div class="bg-slate-900/40 p-6 rounded-2xl border border-slate-800">
-					<div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
-						<h3 class="text-lg font-bold text-emerald-400">Game Development Intern <span class="text-slate-400">@ NowAR Lab</span></h3>
-						<span class="text-xs font-mono text-slate-400">2025</span>
+		<section class="max-w-5xl mx-auto px-6 py-8">
+			<div class="bg-slate-950 border-2 border-slate-800 rounded-xl p-4 font-mono text-xs text-slate-300 shadow-2xl">
+				<div class="flex items-center justify-between pb-3 mb-3 border-b border-slate-800">
+					<div class="flex gap-2">
+						<span class="w-3 h-3 rounded-full bg-rose-500/80 inline-block"></span>
+						<span class="w-3 h-3 rounded-full bg-amber-500/80 inline-block"></span>
+						<span class="w-3 h-3 rounded-full bg-emerald-500/80 inline-block"></span>
 					</div>
-					<ul class="text-slate-300 text-sm space-y-2 list-disc list-inside">
-						<li>Integrated real-time weather systems in Unity using external weather APIs.</li>
-						<li>Optimized dynamic lighting and environmental effects using advanced baked lightmaps techniques.</li>
-						<li>Collaborated in an agile, multidisciplinary team alongside designers, 3D artists, and senior developers.</li>
-					</ul>
+					<span class="text-slate-500">interactive_console.sh</span>
 				</div>
-
-				<!-- Education -->
-				<div class="bg-slate-900/40 p-6 rounded-2xl border border-slate-800">
-					<div class="flex flex-col md:flex-row md:items-center justify-between mb-2">
-						<h3 class="text-lg font-bold text-cyan-400">Bachelor's Degree in Video Game Development <span class="text-slate-400">@ UCM</span></h3>
-						<span class="text-xs font-mono text-slate-400">2021 - 2025</span>
-					</div>
-					<p class="text-slate-400 text-sm mb-2">Universidad Complutense de Madrid (Expected Graduation: 06/2025)</p>
-					<ul class="text-slate-300 text-sm space-y-1 list-disc list-inside">
-						<li>Member of the Mentoring Club: Guided junior students through academic engineering milestones.</li>
-						<li>Active participant in competitive coding challenges and Game Jams.</li>
-					</ul>
+				<p class="text-emerald-400 mb-2">Type 'help' to see available commands or click buttons below:</p>
+				<div class="flex gap-3 mb-4 flex-wrap">
+					<button onclick="runCmd('skills')" class="px-3 py-1 bg-slate-900 border border-slate-700 hover:border-emerald-400 rounded text-emerald-400 text-xs">cmd: skills</button>
+					<button onclick="runCmd('contact')" class="px-3 py-1 bg-slate-900 border border-slate-700 hover:border-cyan-400 rounded text-cyan-400 text-xs">cmd: contact</button>
+					<button onclick="runCmd('clear')" class="px-3 py-1 bg-slate-900 border border-slate-700 hover:border-rose-400 rounded text-rose-400 text-xs">cmd: clear</button>
+				</div>
+				<div id="console-output" class="space-y-1 text-slate-400 min-h-[60px]">
+					<p>&gt; System ready.</p>
 				</div>
 			</div>
 		</section>
 
-		<!-- SKILLS SECTION -->
-		<section id="skills" class="max-w-5xl mx-auto px-6 py-16 border-t border-slate-800/60">
-			<h2 class="text-2xl md:text-3xl font-bold mb-8">Technical Stack</h2>
-			
-			<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-				<div class="p-6 rounded-xl bg-slate-900/40 border border-slate-800">
-					<h3 class="text-emerald-400 font-bold mb-3">Programming Languages</h3>
-					<ul class="text-slate-300 text-sm space-y-2">
-						<li>• C++ / C# / C</li>
-						<li>• Python / Java / JavaScript</li>
-						<li>• Software Architecture</li>
-						<li>• Data Structures & Systems</li>
-					</ul>
-				</div>
+		<script is:inline>
+			function runCmd(cmd) {
+				const output = document.getElementById('console-output');
+				if (cmd === 'skills') {
+					output.innerHTML += `<p class="text-emerald-400">&gt; SKILLS: C++, C#, Unreal Engine 5, Unity, Custom Engine Architecture, VR.</p>`;
+				} else if (cmd === 'contact') {
+					output.innerHTML += `<p class="text-cyan-400">&gt; EMAIL: czarzuelamor@gmail.com | GITHUB: github.com/tyzarzuela</p>`;
+				} else if (cmd === 'clear') {
+					output.innerHTML = `<p>&gt; System ready.</p>`;
+				}
+			}
+		</script>
 
-				<div class="p-6 rounded-xl bg-slate-900/40 border border-slate-800">
-					<h3 class="text-cyan-400 font-bold mb-3">Engines & Platforms</h3>
-					<ul class="text-slate-300 text-sm space-y-2">
-						<li>• Unreal Engine 5 (Blueprints/C++)</li>
-						<li>• Unity Engine / Godot</li>
-						<li>• PS5 & Android Development</li>
-						<li>• Meta Quest / VR Systems</li>
-					</ul>
-				</div>
-
-				<div class="p-6 rounded-xl bg-slate-900/40 border border-slate-800">
-					<h3 class="text-purple-400 font-bold mb-3">Tools & Multimedia</h3>
-					<ul class="text-slate-300 text-sm space-y-2">
-						<li>• Git / Version Control</li>
-						<li>• Visual Studio / VS Code</li>
-						<li>• Blender (3D Blockout & Models)</li>
-						<li>• FMOD / Reaper (Audio Systems)</li>
-					</ul>
-				</div>
+		<footer id="contact" class="max-w-5xl mx-auto px-6 py-12 border-t border-slate-800/80 text-center">
+			<p class="text-slate-500 text-xs font-mono mb-2">© 2026 Claudia Zarzuela Amor. Powered by Astro & Tailwind CSS.</p>
+			<div class="flex justify-center gap-6 text-xs font-bold text-emerald-400 font-mono">
+				<a href="mailto:czarzuelamor@gmail.com" class="hover:underline">EMAIL</a>
+				<a href="https://github.com/tyzarzuela" target="_blank" class="hover:underline">GITHUB</a>
+				<a href="https://linkedin.com" target="_blank" class="hover:underline">LINKEDIN</a>
 			</div>
-		</section>
-
-		<!-- FOOTER / CONTACT -->
-		<footer id="contact" class="max-w-5xl mx-auto px-6 py-12 border-t border-slate-800/60 flex flex-col items-center gap-4 text-center">
-			<h3 class="text-xl font-bold text-slate-200">Let's Connect</h3>
-			<p class="text-slate-400 text-sm max-w-md">Open to Game Development, Gameplay Programming, and Technical Level Design roles.</p>
-			
-			<div class="flex gap-6 text-sm font-semibold text-emerald-400">
-				<a href="mailto:czarzuelamor@gmail.com" class="hover:underline">czarzuelamor@gmail.com</a>
-				<a href="https://linkedin.com" target="_blank" class="hover:underline">LinkedIn</a>
-				<a href="https://github.com/tyzarzuela" target="_blank" class="hover:underline">GitHub</a>
-			</div>
-
-			<p class="text-slate-600 text-xs mt-6">© 2026 Claudia Zarzuela Amor. Built with Astro & Tailwind CSS.</p>
 		</footer>
 
 	</body>

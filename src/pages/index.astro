@@ -14,7 +14,8 @@ import '../styles/global.css';
 		<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Space+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
 	</head>
 	<body class="bg-slate-950 text-slate-100 font-sans antialiased min-h-screen selection:bg-emerald-500 selection:text-slate-950">
-		
+		<!-- CANVAS DE FONDO INTERACTIVO -->
+	<canvas id="bg-canvas" class="fixed top-0 left-0 w-full h-full pointer-events-none -z-10 opacity-40"></canvas>
 		<nav class="sticky top-0 z-50 backdrop-blur-md bg-slate-950/90 border-b border-emerald-900/50">
 			<div class="max-w-5xl mx-auto px-6 h-16 flex items-center justify-between">
 				<span class="font-bold text-sm tracking-widest text-emerald-400 font-['Press_Start_2P']">CZ.DEV</span>
@@ -172,4 +173,104 @@ import '../styles/global.css';
 		</footer>
 
 	</body>
+<script is:inline>
+  const canvas = document.getElementById('bg-canvas');
+  const ctx = canvas.getContext('2d');
+
+  let width, height;
+  let particles = [];
+  const mouse = { x: null, y: null, radius: 150 };
+
+  function resize() {
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+  }
+
+  window.addEventListener('resize', resize);
+  window.addEventListener('mousemove', (e) => {
+    mouse.x = e.x;
+    mouse.y = e.y;
+  });
+
+  class Particle {
+    constructor() {
+      this.x = Math.random() * width;
+      this.y = Math.random() * height;
+      this.vx = (Math.random() - 0.5) * 0.8;
+      this.vy = (Math.random() - 0.5) * 0.8;
+      this.radius = Math.random() * 2 + 1;
+    }
+
+    update() {
+      this.x += this.vx;
+      this.y += this.vy;
+
+      if (this.x < 0 || this.x > width) this.vx *= -1;
+      if (this.y < 0 || this.y > height) this.vy *= -1;
+    }
+
+    draw() {
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
+      ctx.fillStyle = '#34d399'; // Verde esmeralda Tailwind
+      ctx.fill();
+    }
+  }
+
+  function init() {
+    resize();
+    particles = [];
+    const count = Math.floor((width * height) / 12000);
+    for (let i = 0; i < count; i++) {
+      particles.push(new Particle());
+    }
+  }
+
+  function animate() {
+    ctx.clearRect(0, 0, width, height);
+
+    for (let i = 0; i < particles.length; i++) {
+      particles[i].update();
+      particles[i].draw();
+
+      // Conexiones entre partículas
+      for (let j = i + 1; j < particles.length; j++) {
+        const dx = particles[i].x - particles[j].x;
+        const dy = particles[i].y - particles[j].y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < 100) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(particles[j].x, particles[j].y);
+          ctx.strokeStyle = `rgba(52, 211, 153, ${1 - dist / 100})`;
+          ctx.lineWidth = 0.5;
+          ctx.stroke();
+        }
+      }
+
+      // Conexión con el ratón
+      if (mouse.x && mouse.y) {
+        const dx = particles[i].x - mouse.x;
+        const dy = particles[i].y - mouse.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+
+        if (dist < mouse.radius) {
+          ctx.beginPath();
+          ctx.moveTo(particles[i].x, particles[i].y);
+          ctx.lineTo(mouse.x, mouse.y);
+          ctx.strokeStyle = `rgba(34, 211, 238, ${1 - dist / mouse.radius})`;
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        }
+      }
+    }
+
+    requestAnimationFrame(animate);
+  }
+
+  init();
+  animate();
+</script>
+	
 </html>

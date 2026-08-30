@@ -2,201 +2,180 @@
 import '../styles/global.css';
 ---
 
-<html lang="en" class="scroll-smooth">
+<html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<title>Claudia's Arcade Quest | Game Dev Portfolio</title>
+		<title>Claudia OS - Windows 98 Edition</title>
 		
 		<link rel="preconnect" href="https://fonts.googleapis.com">
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-		<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+		<link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+
+		<style>
+			/* Biseles Retro Estilo Windows 95/98 */
+			.win-border {
+				border: 3px solid #000;
+				border-top-color: #dfdfdf;
+				border-left-color: #dfdfdf;
+				border-right-color: #808080;
+				border-bottom-color: #808080;
+			}
+			.win-border-inset {
+				border: 2px solid #000;
+				border-top-color: #808080;
+				border-left-color: #808080;
+				border-right-color: #dfdfdf;
+				border-bottom-color: #dfdfdf;
+			}
+			.win-btn:active {
+				border-top-color: #808080;
+				border-left-color: #808080;
+				border-right-color: #dfdfdf;
+				border-bottom-color: #dfdfdf;
+			}
+		</style>
 	</head>
-	<body class="bg-purple-950 text-amber-300 font-['Press_Start_2P'] antialiased min-h-screen flex flex-col items-center justify-center p-2 md:p-6 select-none">
 
-		<!-- MARCO DE MÁQUINA ARCADE -->
-		<div class="w-full max-w-4xl bg-pink-600 p-4 md:p-8 rounded-3xl border-8 border-yellow-400 shadow-[0_0_50px_rgba(236,72,153,0.5)] relative">
+	<body class="bg-[#008080] font-['VT323'] text-xl min-h-screen overflow-hidden select-none relative">
+
+		<!-- ICONOS DEL ESCRITORIO -->
+		<div class="p-6 grid grid-cols-1 gap-6 w-32 relative z-10">
 			
-			<!-- HEADER DE LA MÁQUINA ARCADE -->
-			<div class="bg-indigo-950 border-4 border-cyan-400 p-4 rounded-xl mb-4 flex flex-wrap justify-between items-center text-[10px] md:text-xs">
-				<div class="text-yellow-300 animate-pulse">SCORE: <span id="score">00000</span></div>
-				<div class="text-pink-400">STAGE: <span id="stage-num">1 - DEV SPACE</span></div>
-				<div class="text-cyan-300">LIVES: ❤️❤️❤️</div>
-			</div>
+			<button onclick="openWin('win-about')" class="flex flex-col items-center gap-1 group cursor-pointer">
+				<div class="w-12 h-12 bg-[#c0c0c0] win-border flex items-center justify-center text-2xl group-hover:bg-[#000080] group-hover:text-white">
+					💻
+				</div>
+				<span class="text-white text-base bg-[#008080] px-1 group-hover:bg-[#000080]">About_Me.exe</span>
+			</button>
 
-			<!-- PANTALLA CRT DEL JUEGO (CANVAS) -->
-			<div class="relative w-full aspect-video bg-slate-950 rounded-xl overflow-hidden border-4 border-purple-900 shadow-inner">
-				<canvas id="game-canvas" class="w-full h-full block cursor-crosshair"></canvas>
+			<button onclick="openWin('win-projects')" class="flex flex-col items-center gap-1 group cursor-pointer">
+				<div class="w-12 h-12 bg-[#c0c0c0] win-border flex items-center justify-center text-2xl group-hover:bg-[#000080] group-hover:text-white">
+					📁
+				</div>
+				<span class="text-white text-base bg-[#008080] px-1 group-hover:bg-[#000080]">Projects</span>
+			</button>
+
+			<button onclick="openWin('win-skills')" class="flex flex-col items-center gap-1 group cursor-pointer">
+				<div class="w-12 h-12 bg-[#c0c0c0] win-border flex items-center justify-center text-2xl group-hover:bg-[#000080] group-hover:text-white">
+					🕹️
+				</div>
+				<span class="text-white text-base bg-[#008080] px-1 group-hover:bg-[#000080]">Skills.dll</span>
+			</button>
+
+		</div>
+
+		<!-- VENTANA 1: ABOUT ME (BIENVENIDA) -->
+		<div id="win-about" class="absolute top-12 left-1/2 -translate-x-1/2 w-[90%] max-w-lg bg-[#c0c0c0] win-border p-1 shadow-2xl z-20">
+			<!-- Barra de Título -->
+			<div class="bg-[#000080] text-white px-2 py-1 flex justify-between items-center font-bold text-lg">
+				<span class="flex items-center gap-2">💾 Welcome - Claudia Zarzuela</span>
+				<button onclick="closeWin('win-about')" class="w-5 h-5 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">X</button>
+			</div>
+			<!-- Contenido -->
+			<div class="p-4">
+				<div class="bg-white win-border-inset p-4 mb-4 text-black space-y-2">
+					<h2 class="text-2xl font-bold text-[#000080]">Claudia Zarzuela Amor</h2>
+					<p class="text-lg">Game Developer & Software Engineer</p>
+					<hr class="border-gray-400" />
+					<p class="text-base leading-snug">
+						Specializing in Game Engines, C++, Unreal Engine 5, VR Systems, and AI integration. Welcome to my retro OS portfolio!
+					</p>
+				</div>
+				<div class="flex justify-end gap-2">
+					<button onclick="openWin('win-projects')" class="bg-[#c0c0c0] px-4 py-1 win-border win-btn text-base font-bold">View Projects &gt;</button>
+				</div>
+			</div>
+		</div>
+
+		<!-- VENTANA 2: PROJECTS -->
+		<div id="win-projects" class="hidden absolute top-20 left-1/2 -translate-x-1/2 w-[90%] max-w-2xl bg-[#c0c0c0] win-border p-1 shadow-2xl z-30">
+			<div class="bg-[#000080] text-white px-2 py-1 flex justify-between items-center font-bold text-lg">
+				<span class="flex items-center gap-2">📁 C:\Portfolio\Projects</span>
+				<button onclick="closeWin('win-projects')" class="w-5 h-5 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">X</button>
+			</div>
+			<div class="p-4 space-y-4">
 				
-				<!-- OVERLAY CRT (LÍNEAS DE ESCANEO ARCADE) -->
-				<div class="absolute inset-0 bg-[linear-gradient(rgba(18,16,16,0)_50%,rgba(0,0,0,0.4)_50%)] bg-[length:100%_4px] pointer-events-none opacity-60"></div>
+				<!-- Proyecto 1 -->
+				<div class="bg-white win-border-inset p-3 text-black">
+					<div class="flex justify-between items-center mb-1">
+						<span class="font-bold text-xl text-[#000080]">🎮 VR LLM Interaction System</span>
+						<span class="text-xs bg-[#c0c0c0] px-1 border border-black">UE5 / C++</span>
+					</div>
+					<p class="text-base mb-2">Bachelor Thesis Project. VR game prototype executing dynamic open-source LLM prompts through custom Blueprints.</p>
+					<a href="https://github.com/tyzarzuela" target="_blank" class="text-[#000080] underline font-bold text-base">[Open Repository]</a>
+				</div>
 
-				<!-- MENÚ INICIAL SOBRE LA PANTALLA -->
-				<div id="game-overlay" class="absolute inset-0 bg-indigo-950/90 flex flex-col items-center justify-center p-6 text-center z-10 transition-opacity">
-					<h1 class="text-xl md:text-3xl text-yellow-300 mb-4 animate-bounce leading-relaxed">
-						CLAUDIA'S ARCADE
-					</h1>
-					<p class="text-pink-400 text-[10px] md:text-xs mb-6 max-w-md leading-loose">
-						SHOOT THE BUGS & POWER-UPS TO UNLOCK MY GAME DEV PROJECTS!
-					</p>
-					<button id="start-btn" class="px-6 py-4 bg-yellow-400 hover:bg-yellow-300 text-indigo-950 font-bold text-xs rounded-xl border-4 border-pink-500 shadow-[4px_4px_0px_0px_rgba(236,72,153,1)] active:translate-x-1 active:translate-y-1 active:shadow-none transition-all cursor-pointer">
-						[ CLICK TO PLAY ]
-					</button>
+				<!-- Proyecto 2 -->
+				<div class="bg-white win-border-inset p-3 text-black">
+					<div class="flex justify-between items-center mb-1">
+						<span class="font-bold text-xl text-[#000080]">⚙️ EDEN Custom Engine</span>
+						<span class="text-xs bg-[#c0c0c0] px-1 border border-black">C++ / Architecture</span>
+					</div>
+					<p class="text-base mb-2">2D/3D game engine built from scratch in C++. Features modular ECS, custom rendering pipeline, and physics.</p>
+					<a href="https://github.com/tyzarzuela" target="_blank" class="text-[#000080] underline font-bold text-base">[Open Repository]</a>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- BARRA DE TAREAS (TASKBAR WINDOWS 98) -->
+		<div class="fixed bottom-0 left-0 w-full h-10 bg-[#c0c0c0] border-t-2 border-white flex justify-between items-center px-1 z-50">
+			
+			<!-- Botón Inicio -->
+			<div class="relative">
+				<button id="start-btn" onclick="toggleStartMenu()" class="h-8 px-2 bg-[#c0c0c0] win-border win-btn flex items-center gap-1 font-bold text-lg cursor-pointer">
+					<span class="text-base">🪟</span>
+					<span>Start</span>
+				</button>
+
+				<!-- Menú Inicio desplegable -->
+				<div id="start-menu" class="hidden absolute bottom-10 left-0 w-48 bg-[#c0c0c0] win-border p-1 shadow-2xl flex flex-col gap-1">
+					<div class="bg-[#000080] text-white p-2 font-bold text-base flex items-center gap-2">
+						<span class="rotate-[-90deg] text-xs tracking-widest">WIN98</span>
+						<span>ClaudiaOS</span>
+					</div>
+					<button onclick="openWin('win-about'); toggleStartMenu()" class="p-2 text-left hover:bg-[#000080] hover:text-white flex items-center gap-2 text-base">💻 About Me</button>
+					<button onclick="openWin('win-projects'); toggleStartMenu()" class="p-2 text-left hover:bg-[#000080] hover:text-white flex items-center gap-2 text-base">📁 Projects</button>
+					<a href="https://github.com/tyzarzuela" target="_blank" class="p-2 text-left hover:bg-[#000080] hover:text-white flex items-center gap-2 text-base">👾 GitHub</a>
+					<hr class="border-gray-500 my-1" />
+					<a href="mailto:czarzuelamor@gmail.com" class="p-2 text-left hover:bg-[#000080] hover:text-white flex items-center gap-2 text-base">✉️ Contact Me</a>
 				</div>
 			</div>
 
-			<!-- PANEL DE CONTROLES INFERIOR -->
-			<div class="mt-4 flex flex-wrap justify-between items-center text-[10px] text-indigo-900 font-bold bg-pink-500 p-3 rounded-xl border-2 border-yellow-300">
-				<span>CONTROLS: MOUSE TO AIM/SHOOT OR ARROWS + SPACE</span>
-				<span>INSERT COIN [00]</span>
-			</div>
-
-			<!-- CONTENEDOR DE DESBLOQUEOS (PROJECTS) -->
-			<div id="unlocks-container" class="mt-8 space-y-4">
-				<h2 class="text-xs text-yellow-300 text-center mb-4">=== UNLOCKED DATA LOGS ===</h2>
-				
-				<div id="log-vr" class="hidden bg-indigo-900/90 border-4 border-cyan-400 p-4 rounded-xl text-xs text-cyan-200">
-					<span class="text-yellow-300 font-bold">[UNLOCKED] VR LLM INTERACTION SYSTEM</span>
-					<p class="text-[10px] mt-2 text-slate-300 font-sans leading-relaxed">
-						Bachelor thesis project. UE5 game prototype executing dynamic open-source LLMs via C++ and Blueprints.
-					</p>
-				</div>
-
-				<div id="log-engine" class="hidden bg-indigo-900/90 border-4 border-pink-400 p-4 rounded-xl text-xs text-pink-200">
-					<span class="text-yellow-300 font-bold">[UNLOCKED] EDEN CUSTOM ENGINE</span>
-					<p class="text-[10px] mt-2 text-slate-300 font-sans leading-relaxed">
-						2D/3D custom engine built from scratch in C++ featuring ECS, custom rendering, and physics integration.
-					</p>
-				</div>
+			<!-- Reloj de la barra de tareas -->
+			<div class="h-8 px-3 bg-[#c0c0c0] win-border-inset flex items-center text-base font-bold text-black" id="win-clock">
+				12:00 PM
 			</div>
 
 		</div>
 
-		<!-- JUEGO BÁSICO EN JAVASCRIPT -->
+		<!-- SCRIPTS DE INTERACCIÓN -->
 		<script is:inline>
-			const canvas = document.getElementById('game-canvas');
-			const ctx = canvas.getContext('2d');
-			const startBtn = document.getElementById('start-btn');
-			const overlay = document.getElementById('game-overlay');
-			const scoreEl = document.getElementById('score');
-
-			let score = 0;
-			let isPlaying = false;
-			let player = { x: 300, y: 350, w: 20, h: 20, speed: 5 };
-			let bullets = [];
-			let targets = [];
-
-			function resizeCanvas() {
-				canvas.width = canvas.parentElement.clientWidth;
-				canvas.height = canvas.parentElement.clientHeight;
-				player.x = canvas.width / 2;
-				player.y = canvas.height - 40;
+			function openWin(id) {
+				document.getElementById(id).classList.remove('hidden');
 			}
-			window.addEventListener('resize', resizeCanvas);
-			resizeCanvas();
-
-			// CONTROLES DE RATÓN
-			canvas.addEventListener('mousemove', (e) => {
-				const rect = canvas.getBoundingClientRect();
-				player.x = e.clientX - rect.left;
-			});
-
-			canvas.addEventListener('click', () => {
-				if (!isPlaying) return;
-				bullets.push({ x: player.x, y: player.y, speed: 7 });
-			});
-
-			// GENERADOR DE OBJETIVOS (BUGS Y POWER-UPS)
-			function spawnTarget() {
-				if (!isPlaying) return;
-				const types = [
-					{ label: 'BUG', color: '#ef4444', score: 100, unlock: null },
-					{ label: 'VR.UE5', color: '#22d3ee', score: 500, unlock: 'log-vr' },
-					{ label: 'C++.ENGINE', color: '#ec4899', score: 500, unlock: 'log-engine' }
-				];
-				const type = types[Math.floor(Math.random() * types.length)];
-				targets.push({
-					x: Math.random() * (canvas.width - 60) + 30,
-					y: -20,
-					w: 60,
-					h: 20,
-					speed: Math.random() * 1.5 + 1,
-					...type
-				});
-				setTimeout(spawnTarget, Math.random() * 1500 + 1000);
+			function closeWin(id) {
+				document.getElementById(id).classList.add('hidden');
+			}
+			function toggleStartMenu() {
+				const menu = document.getElementById('start-menu');
+				menu.classList.toggle('hidden');
 			}
 
-			// BUCLE PRINCIPAL DEL JUEGO
-			function gameLoop() {
-				ctx.fillStyle = '#0f172a';
-				ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-				if (isPlaying) {
-					// DIBUJAR JUGADOR (NAVE)
-					ctx.fillStyle = '#fde047';
-					ctx.beginPath();
-					ctx.moveTo(player.x, player.y - 15);
-					ctx.lineTo(player.x - 15, player.y + 10);
-					ctx.lineTo(player.x + 15, player.y + 10);
-					ctx.closePath();
-					ctx.fill();
-
-					// BALAS
-					for (let i = bullets.length - 1; i >= 0; i--) {
-						const b = bullets[i];
-						b.y -= b.speed;
-						ctx.fillStyle = '#f43f5e';
-						ctx.fillRect(b.x - 2, b.y, 4, 10);
-
-						if (b.y < 0) bullets.splice(i, 1);
-					}
-
-					// OBJETIVOS
-					for (let i = targets.length - 1; i >= 0; i--) {
-						const t = targets[i];
-						t.y += t.speed;
-
-						// DIBUJAR CAJA
-						ctx.fillStyle = t.color;
-						ctx.fillRect(t.x - t.w/2, t.y - t.h/2, t.w, t.h);
-						ctx.fillStyle = '#ffffff';
-						ctx.font = '8px "Press Start 2P"';
-						ctx.textAlign = 'center';
-						ctx.fillText(t.label, t.x, t.y + 3);
-
-						// COLISIONES
-						for (let j = bullets.length - 1; j >= 0; j--) {
-							const b = bullets[j];
-							if (Math.abs(b.x - t.x) < t.w/2 && Math.abs(b.y - t.y) < t.h/2) {
-								score += t.score;
-								scoreEl.innerText = String(score).padStart(5, '0');
-
-								if (t.unlock) {
-									const el = document.getElementById(t.unlock);
-									if (el) el.classList.remove('hidden');
-								}
-
-								targets.splice(i, 1);
-								bullets.splice(j, 1);
-								break;
-							}
-						}
-
-						if (t.y > canvas.height + 20) targets.splice(i, 1);
-					}
-				}
-
-				requestAnimationFrame(gameLoop);
+			// Actualizar Reloj
+			function updateClock() {
+				const now = new Date();
+				let hours = now.getHours();
+				let minutes = now.getMinutes();
+				const ampm = hours >= 12 ? 'PM' : 'AM';
+				hours = hours % 12 || 12;
+				minutes = minutes < 10 ? '0' + minutes : minutes;
+				document.getElementById('win-clock').innerText = `${hours}:${minutes} ${ampm}`;
 			}
-
-			startBtn.addEventListener('click', () => {
-				overlay.classList.add('opacity-0', 'pointer-events-none');
-				isPlaying = true;
-				spawnTarget();
-			});
-
-			gameLoop();
+			setInterval(updateClock, 1000);
+			updateClock();
 		</script>
 
 	</body>

@@ -40,15 +40,37 @@ import '../styles/global.css';
 				background: linear-gradient(90deg, #000080 0%, #1084d0 100%);
 			}
 			
-			/* Clase de ventana maximizada */
-			.window-maximized {
-				top: 0 !important;
-				left: 0 !important;
-				width: 100vw !important;
-				height: calc(100vh - 40px) !important;
-				max-width: none !important;
-				max-height: none !important;
-				margin: 0 !important;
+			/* VENTANAS REDIMENSIONABLES DINÁMICAMENTE (RESIZE MANUAL) */
+			.win-resizable {
+				resize: both;
+				overflow: hidden;
+				min-width: 320px;
+				min-height: 220px;
+			}
+
+			/* BARRA DE SCROLL ESTILO WINDOWS 98 */
+			.win-scroll::-webkit-scrollbar {
+				width: 16px;
+				height: 16px;
+				background-color: #c0c0c0;
+			}
+			.win-scroll::-webkit-scrollbar-track {
+				background-color: #e0e0e0;
+				border: 1px solid #808080;
+			}
+			.win-scroll::-webkit-scrollbar-thumb {
+				background-color: #c0c0c0;
+				border: 2px solid;
+				border-top-color: #dfdfdf;
+				border-left-color: #dfdfdf;
+				border-right-color: #000000;
+				border-bottom-color: #000000;
+			}
+			.win-scroll::-webkit-scrollbar-thumb:active {
+				border-top-color: #000000;
+				border-left-color: #000000;
+				border-right-color: #dfdfdf;
+				border-bottom-color: #dfdfdf;
 			}
 		</style>
 	</head>
@@ -87,91 +109,94 @@ import '../styles/global.css';
 		</div>
 
 		<!-- VENTANA 1: ABOUT ME -->
-		<div id="win-about" class="hidden absolute top-12 left-12 w-[350px] bg-[#c0c0c0] win-border p-[2px] shadow-2xl z-20 flex flex-col">
-			<!-- Barra de Título (Para arrastrar) -->
-			<div class="window-header title-bar-gradient text-white px-1 py-[2px] flex justify-between items-center font-bold text-sm cursor-move">
-				<span class="flex items-center gap-1 pointer-events-none">
-					💻 About_Me.exe
-				</span>
+		<div id="win-about" class="win-resizable hidden absolute top-12 left-12 w-[380px] h-[300px] bg-[#c0c0c0] win-border p-[2px] shadow-2xl z-20 flex flex-col">
+			<div class="window-header title-bar-gradient text-white px-1 py-[2px] flex justify-between items-center font-bold text-sm cursor-move shrink-0">
+				<span class="flex items-center gap-1 pointer-events-none">💻 About_Me.exe</span>
 				<div class="flex gap-[2px]">
-					<button onclick="toggleMaximize('win-about')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">◻</button>
+					<button onclick="expandWin('win-about')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">◻</button>
 					<button onclick="closeWin('win-about')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">X</button>
 				</div>
 			</div>
-			<!-- Contenido con Scroll Funcional -->
-			<div class="p-3 overflow-y-auto flex-1 max-h-[400px]">
-				<div class="flex items-start gap-3 mb-4">
-					<div class="text-4xl">👤</div>
-					<div>
-						<h2 class="text-base font-bold">Claudia Zarzuela Amor</h2>
-						<p class="text-xs text-gray-700">Game Dev & Software Engineer</p>
+			<div class="p-3 overflow-y-auto flex-1 win-scroll flex flex-col justify-between">
+				<div>
+					<div class="flex items-start gap-3 mb-4">
+						<div class="text-4xl">👤</div>
+						<div>
+							<h2 class="text-base font-bold">Claudia Zarzuela Amor</h2>
+							<p class="text-xs text-gray-700">Game Dev & Software Engineer</p>
+						</div>
+					</div>
+					<div class="bg-white win-border-inset p-3 text-black text-xs space-y-2">
+						<p><strong>Level:</strong> Pro</p>
+						<p><strong>Tech Stack:</strong> C++, Unreal Engine 5, VR Systems, AI Integration.</p>
+						<p class="text-gray-600">Specialized in gameplay architecture and custom engine development.</p>
 					</div>
 				</div>
-				<div class="bg-white win-border-inset p-3 text-black text-xs space-y-2 mb-4">
-					<p><strong>Level:</strong> Pro</p>
-					<p><strong>Tech Stack:</strong> C++, Unreal Engine 5, VR Systems, AI Integration.</p>
-					<p class="text-gray-600">Specialized in gameplay architecture and custom engine development.</p>
-				</div>
-				<div class="flex justify-end">
+				<div class="flex justify-end pt-2">
 					<button onclick="closeWin('win-about')" class="bg-[#c0c0c0] px-4 py-1 win-border win-btn text-xs font-bold cursor-pointer">OK</button>
 				</div>
 			</div>
 		</div>
 
-		<!-- VENTANA 2: PROJECTS -->
-		<div id="win-projects" class="hidden absolute top-20 left-24 w-[90%] max-w-2xl h-[450px] bg-[#c0c0c0] win-border p-[2px] shadow-2xl z-30 flex flex-col">
-			<!-- Barra de Título (Para arrastrar) -->
-			<div class="window-header title-bar-gradient text-white px-1 py-[2px] flex justify-between items-center font-bold text-sm cursor-move">
-				<span class="flex items-center gap-1 pointer-events-none">
-					📁 C:\Portfolio\Projects
-				</span>
+		<!-- VENTANA 2: PROJECTS (AMPLIADA Y CON MÁS CONTENIDO) -->
+		<div id="win-projects" class="win-resizable hidden absolute top-16 left-28 w-[680px] h-[480px] bg-[#c0c0c0] win-border p-[2px] shadow-2xl z-30 flex flex-col">
+			<div class="window-header title-bar-gradient text-white px-1 py-[2px] flex justify-between items-center font-bold text-sm cursor-move shrink-0">
+				<span class="flex items-center gap-1 pointer-events-none">📁 C:\Portfolio\Projects</span>
 				<div class="flex gap-[2px]">
-					<button onclick="toggleMaximize('win-projects')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">◻</button>
+					<button onclick="expandWin('win-projects')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">◻</button>
 					<button onclick="closeWin('win-projects')" class="w-4 h-4 bg-[#c0c0c0] text-black win-border win-btn flex items-center justify-center text-xs font-bold">X</button>
 				</div>
 			</div>
 
-			<!-- Barra de menú -->
-			<div class="flex gap-4 px-2 py-1 bg-[#c0c0c0] border-b border-gray-400 text-xs">
+			<div class="flex gap-4 px-2 py-1 bg-[#c0c0c0] border-b border-gray-400 text-xs shrink-0">
 				<span class="hover:bg-blue-800 hover:text-white px-1 cursor-pointer">File</span>
 				<span class="hover:bg-blue-800 hover:text-white px-1 cursor-pointer">Edit</span>
 				<span class="hover:bg-blue-800 hover:text-white px-1 cursor-pointer">View</span>
 			</div>
 			
-			<!-- Contenido con Scroll Funcional -->
-			<div class="p-3 m-1 bg-white win-border-inset flex-1 overflow-y-auto space-y-4">
+			<div class="p-3 m-1 bg-white win-border-inset flex-1 overflow-y-auto win-scroll space-y-4">
 				
+				<!-- Proyecto 1 -->
 				<div class="border-b border-gray-300 pb-3">
 					<div class="flex justify-between items-center mb-1">
-						<span class="font-bold text-[#000080] text-base flex items-center gap-2">
-							🎮 VR LLM Interaction System
-						</span>
+						<span class="font-bold text-[#000080] text-base flex items-center gap-2">🥽 VR LLM Interaction System</span>
 						<span class="text-xs bg-[#c0c0c0] px-2 py-0.5 win-border-inset">UE5 / C++</span>
 					</div>
-					<p class="text-xs mb-2 text-gray-800">Bachelor thesis project. VR game prototype executing dynamic open-source LLM prompts through custom Blueprints.</p>
+					<p class="text-xs mb-2 text-gray-800">Bachelor thesis project. VR game prototype executing dynamic open-source LLM prompts through custom C++ and Blueprints architecture.</p>
 					<a href="https://github.com/tyzarzuela" target="_blank" class="text-blue-600 underline text-xs font-bold">Explore Source Code &rarr;</a>
 				</div>
 
+				<!-- Proyecto 2 -->
 				<div class="border-b border-gray-300 pb-3">
 					<div class="flex justify-between items-center mb-1">
-						<span class="font-bold text-[#000080] text-base flex items-center gap-2">
-							⚙️ EDEN Custom Engine
-						</span>
+						<span class="font-bold text-[#000080] text-base flex items-center gap-2">⚙️ EDEN Custom Engine</span>
 						<span class="text-xs bg-[#c0c0c0] px-2 py-0.5 win-border-inset">C++ / ECS</span>
 					</div>
-					<p class="text-xs mb-2 text-gray-800">2D/3D game engine built from scratch in C++. Features modular ECS, custom rendering pipeline, and physics.</p>
+					<p class="text-xs mb-2 text-gray-800">2D/3D game engine built from scratch in C++. Features modular Entity Component System (ECS), custom OpenGL rendering pipeline, and physics integration.</p>
 					<a href="https://github.com/tyzarzuela" target="_blank" class="text-blue-600 underline text-xs font-bold">Explore Source Code &rarr;</a>
 				</div>
 
-				<!-- Elementos adicionales para forzar el Scroll -->
+				<!-- Proyecto 3 -->
 				<div class="border-b border-gray-300 pb-3">
 					<div class="flex justify-between items-center mb-1">
-						<span class="font-bold text-[#000080] text-base">🕹️ Gameplay Prototypes</span>
-						<span class="text-xs bg-[#c0c0c0] px-2 py-0.5 win-border-inset">Unreal / Unity</span>
+						<span class="font-bold text-[#000080] text-base flex items-center gap-2">🤖 AI Behavior Tree & Pathfinder</span>
+						<span class="text-xs bg-[#c0c0c0] px-2 py-0.5 win-border-inset">C++ / Algorithms</span>
 					</div>
-					<p class="text-xs mb-2 text-gray-800">Collection of experimental mechanics, AI behavior trees, and procedural shaders.</p>
+					<p class="text-xs mb-2 text-gray-800">Custom A* pathfinding and hierarchical finite state machines for complex NPC tactical decision-making in real-time environments.</p>
+					<a href="https://github.com/tyzarzuela" target="_blank" class="text-blue-600 underline text-xs font-bold">Explore Source Code &rarr;</a>
 				</div>
 
+				<!-- Proyecto 4 -->
+				<div class="border-b border-gray-300 pb-3">
+					<div class="flex justify-between items-center mb-1">
+						<span class="font-bold text-[#000080] text-base flex items-center gap-2">🕹️ Arcade Physics & Shaders Sandbox</span>
+						<span class="text-xs bg-[#c0c0c0] px-2 py-0.5 win-border-inset">HLSL / Unity</span>
+					</div>
+					<p class="text-xs mb-2 text-gray-800">Collection of pixel-art post-processing filters, CRT screen distortion shaders, and custom rigid-body arcade dynamics.</p>
+					<a href="https://github.com/tyzarzuela" target="_blank" class="text-blue-600 underline text-xs font-bold">Explore Source Code &rarr;</a>
+				</div>
+
+				<!-- Secret Note -->
 				<div class="p-3 bg-yellow-100 border border-yellow-400 rounded flex items-center gap-3">
 					<span class="text-xl">⚠️</span>
 					<div>
@@ -210,7 +235,7 @@ import '../styles/global.css';
 			</div>
 		</div>
 
-		<!-- SISTEMA DRAG & DROP Y CONTROL DE VENTANAS -->
+		<!-- CONTROL DE VENTANAS Y DRAG & DROP -->
 		<script is:inline>
 			let zIndexCounter = 40;
 
@@ -229,9 +254,19 @@ import '../styles/global.css';
 				document.getElementById(id).classList.add('hidden');
 			}
 
-			function toggleMaximize(id) {
+			// Botón de ampliar proporcionalmente (+200px)
+			function expandWin(id) {
 				const win = document.getElementById(id);
-				win.classList.toggle('window-maximized');
+				const currentWidth = win.offsetWidth;
+				const currentHeight = win.offsetHeight;
+				
+				if (currentWidth < 900) {
+					win.style.width = (currentWidth + 200) + 'px';
+					win.style.height = (currentHeight + 150) + 'px';
+				} else {
+					win.style.width = '680px';
+					win.style.height = '480px';
+				}
 				bringToFront(win);
 			}
 
@@ -239,7 +274,7 @@ import '../styles/global.css';
 				document.getElementById('start-menu').classList.toggle('hidden');
 			}
 
-			// SISTEMA PARA ARRASTRAR VENTANAS (DRAG & DROP)
+			// SISTEMA DE ARRASTRE
 			document.querySelectorAll('[id^="win-"]').forEach(win => {
 				const header = win.querySelector('.window-header');
 				let isDragging = false;
@@ -249,9 +284,7 @@ import '../styles/global.css';
 
 				if (header) {
 					header.addEventListener('mousedown', (e) => {
-						if (e.target.tagName === 'BUTTON') return; // Evitar arrastrar si se pulsa X o Maximizar
-						if (win.classList.contains('window-maximized')) return; // No arrastrar si está maximizado
-
+						if (e.target.tagName === 'BUTTON') return;
 						isDragging = true;
 						offsetX = e.clientX - win.offsetLeft;
 						offsetY = e.clientY - win.offsetTop;

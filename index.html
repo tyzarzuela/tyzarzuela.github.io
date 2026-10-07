@@ -1,0 +1,2238 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Tyler Zarzuela Amor</title>
+
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- =====================================================
+       FIXED NAVIGATION
+       ===================================================== -->
+
+  <header class="navbar-sticky">
+
+    <div class="navbar-container">
+
+      <a href="#" class="navbar-logo">
+        TYLER ZARZUELA
+      </a>
+
+      <nav class="navbar-links">
+
+        <a href="#work" class="nav-item">
+          Projects
+        </a>
+
+        <a href="#about" class="nav-item">
+          About Me
+        </a>
+
+        <a href="#contact" class="nav-item">
+          Contact
+        </a>
+
+      </nav>
+
+    </div>
+
+  </header>
+
+
+  <!-- =====================================================
+       DECORATIVE BACKGROUND ICONS
+       ===================================================== -->
+
+  <div
+    id="bg-decorations"
+    class="bg-decorations"
+    aria-hidden="true">
+  </div>
+
+
+  <main class="container">
+
+
+    <!-- =====================================================
+         HERO
+         ===================================================== -->
+
+    <section class="hero-split">
+
+      <div class="hero-left-content">
+
+        <p class="section-tag">
+          TYLER ZARZUELA / GAME DESIGNER & PROGRAMMER
+        </p>
+
+        <h1 class="hero-title">
+          Imagine. Create. Play.
+        </h1>
+<div class="hero-story-text" style="text-align: justify;">
+
+  <p class="hero-lead">
+    Hello World! I'm Tyler, a game developer with a restless mind and a relentless drive to 
+    <span style="color: #d9f99d; font-weight: bold;">build</span>, 
+    <span style="color: #bef264; font-weight: bold;">break</span>, and 
+    <span style="color: #a3e635; font-weight: bold;">innovate</span>.
+  </p>
+
+  <p>
+    Honestly? My journey started with childhood exploits. I wasn't just playing games, I was QA testing them without permission. <br><br>
+    On <em style="font-size: 1.15em;"><span style="color: #a3e635; font-weight: 600;">The Sims 3</span></em> for Wii, my sister and I broke the local economy through an inventory state desync: put a fish in the fridge, take it out, and the game would spawn a duplicate inside the container, giving us endless cash.<br><br> 
+    In <em style="font-size: 1.15em;"><span style="color: #a3e635; font-weight: 600;">Animal Crossing: New Horizons</span></em>, I weaponized local co-op latency by grabbing items off a rotating table on the exact frame my friend turned it, tricking the game into duplicating rare loot directly into my pockets.
+  </p>
+
+  <p>
+    What started as playful mischief quickly evolved into my life's true calling: dissecting complex game logic, reverse-engineering core mechanics, and building robust, interactive experiences that bring people together.
+  </p>
+
+  <p style="font-style: italic; color: #a3e635; font-weight: 600;">
+    I guess you could say I stopped breaking worlds just so I could start building better ones.
+  </p>
+
+</div>
+      </div>
+
+
+      <div class="hero-right-media">
+
+        <div class="hero-image-wrapper">
+
+          <img
+            src="assets/Intro.png"
+            alt="Tyler Zarzuela"
+            class="hero-main-photo">
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <hr class="divider">
+
+
+    <!-- =====================================================
+         01 / SELECTED WORK
+         ===================================================== -->
+
+    <section
+      id="work"
+      class="section-work">
+
+      <p class="section-number">
+        01 / SELECTED WORK
+      </p>
+
+      <h2 class="section-title">
+        Explore my work
+      </h2>
+
+
+      <div class="portfolio-explorer">
+
+
+        <!-- =================================================
+             SIDEBAR
+             ================================================= -->
+
+        <aside class="category-sidebar">
+
+          <p class="sidebar-label">
+            MY PROJECTS
+          </p>
+
+
+          <!-- MAIN PROJECTS -->
+
+          <button
+            class="tab-btn active"
+            onclick="switchCategory('main-projects', this)">
+
+            <svg
+              class="folder-svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2">
+
+              <path
+                d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+              </path>
+
+            </svg>
+
+            Main projects
+
+            <span class="count-badge">
+              (3)
+            </span>
+
+          </button>
+
+
+          <!-- PROGRAMMING -->
+
+          <div class="sidebar-dropdown">
+
+            <button
+              class="tab-btn has-arrow"
+              onclick="toggleDropdown('prog-dropdown', 'programming', this)">
+
+              <div class="tab-btn-content">
+
+                <svg
+                  class="folder-svg"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2">
+
+                  <path
+                    d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+                  </path>
+
+                </svg>
+
+                Programming
+
+                <span class="count-badge">
+                  (10)
+                </span>
+
+              </div>
+
+              <span class="dropdown-arrow">
+                &#9656;
+              </span>
+
+            </button>
+
+
+            <div
+              id="prog-dropdown"
+              class="dropdown-subitems">
+
+              <button
+                class="tab-btn sub-tab-btn"
+                onclick="filterSubcategory('tools', this)">
+
+                <span class="sub-tree-line">
+                  └
+                </span>
+
+                Tools
+
+                <span class="count-badge">
+                  (4)
+                </span>
+
+              </button>
+
+
+              <button
+                class="tab-btn sub-tab-btn"
+                onclick="filterSubcategory('generic', this)">
+
+                <span class="sub-tree-line">
+                  └
+                </span>
+
+                Generic
+
+                <span class="count-badge">
+                  (6)
+                </span>
+
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- LEVEL DESIGN -->
+
+          <button
+            class="tab-btn"
+            onclick="switchCategory('level-design', this)">
+
+            <svg
+              class="folder-svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2">
+
+              <path
+                d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+              </path>
+
+            </svg>
+
+            Level design
+
+          </button>
+
+
+          <!-- GAME JAMS -->
+
+          <button
+            class="tab-btn"
+            onclick="switchCategory('game-jams', this)">
+
+            <svg
+              class="folder-svg"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2">
+
+              <path
+                d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z">
+              </path>
+
+            </svg>
+
+            Game jams
+
+            <span class="count-badge">
+              (4)
+            </span>
+
+          </button>
+
+        </aside>
+
+
+        <!-- =================================================
+             PROJECT CONTENT
+             ================================================= -->
+
+        <div class="projects-content">
+
+
+          <!-- CATEGORY HEADER -->
+
+          <div class="content-header-bar">
+
+            <p
+              id="category-path"
+              class="path-indicator">
+
+              MAIN PROJECTS
+
+            </p>
+
+          </div>
+
+
+          <!-- =================================================
+               MAIN PROJECTS
+               ================================================= -->
+
+          <div
+            id="cat-main-projects"
+            class="category-group active">
+
+
+            <div class="main-cards-container">
+
+
+              <!-- PROJECT 01 -->
+
+              <div
+                class="main-card active"
+                onclick="selectMainProject(1)">
+
+                <span class="card-num">
+                  01
+                </span>
+
+              </div>
+
+
+              <!-- PROJECT 02 -->
+
+              <div
+                class="main-card"
+                onclick="selectMainProject(2)">
+
+                <span class="card-num">
+                  02
+                </span>
+
+              </div>
+
+
+              <!-- PROJECT 03 -->
+
+              <div
+                class="main-card"
+                onclick="selectMainProject(3)">
+
+                <span class="card-num">
+                  03
+                </span>
+
+              </div>
+
+            </div>
+
+
+            <!-- SELECTED PROJECT INFORMATION -->
+
+            <div class="main-project-details expanded-details">
+
+
+              <div class="details-left">
+
+                <div class="details-header-row">
+
+                  <h3 id="main-project-title">
+                    LLM-Driven Reactive Environments in UE5
+                  </h3>
+
+                  <span
+                    id="main-project-status"
+                    class="status-badge">
+
+                    COMPLETED
+
+                  </span>
+
+                </div>
+
+
+                <p
+                  id="main-project-desc"
+                  class="details-paragraph">
+
+                  An experimental Unreal Engine 5 system integrating local Large Language Models to dynamically alter environment layout, mechanics, and narrative in real time.
+
+                </p>
+
+
+                <div class="details-meta-grid">
+
+                  <div class="meta-item">
+
+                    <span class="meta-label">
+                      ENGINE:
+                    </span>
+
+                    <span
+                      id="main-project-engine"
+                      class="meta-val">
+
+                      UE 5.2.1 / Blueprints & Python
+
+                    </span>
+
+                  </div>
+
+
+                  <div class="meta-item">
+
+                    <span class="meta-label">
+                      ROLE:
+                    </span>
+
+                    <span
+                      id="main-project-role"
+                      class="meta-val">
+
+                      Core Developer & Researcher
+
+                    </span>
+
+                  </div>
+
+
+                  <div class="meta-item">
+
+                    <span class="meta-label">
+                      GENRE:
+                    </span>
+
+                    <span
+                      id="main-project-genre"
+                      class="meta-val">
+
+                      Tech Demo / AI Systems Tooling
+
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <div class="details-right">
+
+                <button
+                  class="explore-more-btn primary-green"
+                  onclick="openActiveMainProjectModal()">
+
+                  Explore More
+
+                </button>
+
+              </div>
+
+            </div>
+
+          </div>
+
+
+          <!-- =================================================
+               PROGRAMMING
+               ================================================= -->
+
+          <div
+            id="cat-programming"
+            class="category-group scrollable-group">
+
+
+            <!-- =================================================
+                 TOOLS
+                 ================================================= -->
+
+            <div class="subcategory-header">
+
+              <span class="subcategory-title">
+                TOOLS
+              </span>
+
+            </div>
+
+
+            <!-- VUAJ -->
+
+            <div
+              class="project-folder-card"
+              data-subcat="tools"
+              data-tags="Unity, Accessibility, C#">
+
+              <div class="folder-main-info">
+
+                <div class="card-image-wrapper">
+
+                  <img
+                    src="assets/VUAJ.png"
+                    alt="Vision Unity Accessibility Junction">
+
+                </div>
+
+
+                <div class="folder-text-content">
+
+                  <div class="folder-header">
+
+                    <h3>
+                      Vision Unity Accessibility Junction
+                    </h3>
+
+                    <div class="badge-container">
+
+                      <span class="folder-badge badge-unity">
+                        UNITY
+                      </span>
+
+                      <span class="folder-badge badge-csharp">
+                        C#
+                      </span>
+
+                    </div>
+
+                  </div>
+
+
+                  <p class="folder-desc">
+
+                    A modular visual accessibility plugin developed in Unity 2D designed to streamline early-stage inclusion.
+
+                  </p>
+
+
+                  <div class="folder-meta-tags">
+
+                    <span>
+                      <strong>Duration:</strong>
+                      1 month
+                    </span>
+
+                    <span>
+                      <strong>Engine:</strong>
+                      Unity 2022.3 LTS (C#)
+                    </span>
+
+                    <span>
+                      <strong>Role:</strong>
+                      Settings & Tool Developer
+                    </span>
+
+                    <span>
+                      <strong>Tags:</strong>
+                      Unity, Accessibility, UI Automation, C#
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="explore-more-btn-sm"
+                onclick="openSecondaryProjectModal('vuaj')">
+
+                Explore More
+
+              </button>
+
+            </div>
+
+
+            <!-- UNSTRUNG TOOL -->
+
+            <div
+              class="project-folder-card"
+              data-subcat="tools"
+              data-tags="Unreal Engine, UE5, Tools, C++, Blueprints">
+
+              <div class="folder-main-info">
+
+                <div class="card-image-wrapper">
+
+                  <img
+                    src="assets/Unstrung/UnstrungCapsula.png"
+                    alt="Unstrung">
+
+                </div>
+
+
+                <div class="folder-text-content">
+
+                  <div class="folder-header">
+
+                    <h3>
+                      Unstrung (Narrator Tool & Pipeline)
+                    </h3>
+
+                    <div class="badge-container">
+
+                      <span class="folder-badge badge-unreal">
+                        UE5
+                      </span>
+
+                      <span class="folder-badge badge-csharp">
+                        TOOLS
+                      </span>
+
+                    </div>
+
+                  </div>
+
+
+                  <p class="folder-desc">
+
+                    Designer-friendly narrator authoring tool and JSON-driven dialogue pipeline developed in Unreal Engine 5 using Editor Utility Widgets.
+
+                  </p>
+
+
+                  <div class="folder-meta-tags">
+
+                    <span>
+                      <strong>Duration:</strong>
+                      6 Months
+                    </span>
+
+                    <span>
+                      <strong>Engine:</strong>
+                      UE5 / C++ / Blueprints
+                    </span>
+
+                    <span>
+                      <strong>Role:</strong>
+                      Lead Designer & Tool Designer
+                    </span>
+
+                    <span>
+                      <strong>Tags:</strong>
+                      Unreal Engine 5, Editor Utility Widget, Narrative Pipeline, Tools
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="explore-more-btn-sm"
+                onclick="openSecondaryProjectModal('unstrung-tool')">
+
+                Explore More
+
+              </button>
+
+            </div>
+
+
+            <!-- LLM -->
+
+            <div
+              class="project-folder-card"
+              data-subcat="tools"
+              data-tags="Unreal Engine, UE5, Blueprints, Python, LLM, AI, Tools">
+
+              <div class="folder-main-info">
+
+                <div class="card-image-wrapper">
+
+                  <img
+                    src="assets/TFG/Capsula.png"
+                    alt="LLM-Driven Reactive Environments in UE5">
+
+                </div>
+
+
+                <div class="folder-text-content">
+
+                  <div class="folder-header">
+
+                    <h3>
+                      LLM-Driven Reactive Environments in UE5
+                    </h3>
+
+                    <div class="badge-container">
+
+                      <span class="folder-badge badge-unreal">
+                        UE5
+                      </span>
+
+                      <span class="folder-badge badge-csharp">
+                        AI / TOOLS
+                      </span>
+
+                    </div>
+
+                  </div>
+
+
+                  <p class="folder-desc">
+
+                    Experimental Unreal Engine 5 system integrating local Large Language Models to dynamically alter environment layout, mechanics, and narrative in real time.
+
+                  </p>
+
+
+                  <div class="folder-meta-tags">
+
+                    <span>
+                      <strong>Duration:</strong>
+                      9 Months
+                    </span>
+
+                    <span>
+                      <strong>Engine:</strong>
+                      UE 5.2.1 / Blueprints & Python
+                    </span>
+
+                    <span>
+                      <strong>Role:</strong>
+                      Core Developer & Researcher
+                    </span>
+
+                    <span>
+                      <strong>Tags:</strong>
+                      LLM, Generative AI, Prompt Engineering, Unreal Engine, Reactivity
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="explore-more-btn-sm"
+                onclick="openSecondaryProjectModal('llm-reactive-environments')">
+
+                Explore More
+
+              </button>
+
+            </div>
+
+
+            <!-- EDEN -->
+
+            <div
+              class="project-folder-card"
+              data-subcat="tools"
+              data-tags="C++, OGRE, OpenGL, Bullet3D, Lua, Python, Blender, Tools, Game Engine">
+
+              <div class="folder-main-info">
+
+                <div class="card-image-wrapper">
+
+                  <img
+                    src="assets/EDEN/EDENCapsula.png"
+                    alt="EDEN – 3D Data-Driven Game Engine">
+
+                </div>
+
+
+                <div class="folder-text-content">
+
+                  <div class="folder-header">
+
+                    <h3>
+                      EDEN – 3D Data-Driven Game Engine
+                    </h3>
+
+                    <div class="badge-container">
+
+                      <span class="folder-badge badge-cpp">
+                        C++
+                      </span>
+
+                      <span class="folder-badge badge-csharp">
+                        ENGINE / TOOLS
+                      </span>
+
+                    </div>
+
+                  </div>
+
+
+                  <p class="folder-desc">
+
+                    A modular, data-driven 3D game engine developed in C++, with contributions focused on the rendering subsystem and Blender-based scene authoring pipeline.
+
+                  </p>
+
+
+                  <div class="folder-meta-tags">
+
+                    <span>
+                      <strong>Engine:</strong>
+                      C++ / OGRE/OpenGL / Bullet3D / Lua / Python / Blender
+                    </span>
+
+                    <span>
+                      <strong>Role:</strong>
+                      Rendering & Tools Developer
+                    </span>
+
+                    <span>
+                      <strong>Tags:</strong>
+                      3D Game Engine, Rendering, Tools, Data-Driven Pipeline
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="explore-more-btn-sm"
+                onclick="openSecondaryProjectModal('eden-engine')">
+
+                Explore More
+
+              </button>
+
+            </div>
+
+
+            <!-- =================================================
+                 GENERIC
+                 ================================================= -->
+
+            <div class="subcategory-header margin-top-sub">
+
+              <span class="subcategory-title">
+                GENERIC
+              </span>
+
+            </div>
+
+
+            <!-- OTT -->
+
+            <div
+              class="project-folder-card"
+              data-subcat="generic"
+              data-tags="C++">
+
+              <div class="folder-main-info">
+
+                <div class="card-image-wrapper">
+
+                  <img
+                    src="assets/Ott/capsulaOtt.png"
+                    alt="Ott: An Elemental Journey">
+
+                </div>
+
+
+                <div class="folder-text-content">
+
+                  <div class="folder-header">
+
+                    <h3>
+                      Ott: An Elemental Journey
+                    </h3>
+
+                    <div class="badge-container">
+
+                      <span class="folder-badge badge-cpp">
+                        C++
+                      </span>
+
+                      <span class="folder-badge badge-sdl">
+                        SDL
+                      </span>
+
+                    </div>
+
+                  </div>
+
+
+                  <p class="folder-desc">
+
+                    A fantasy 2D platformer adventure game where Ott journeys through elemental regions, gains new abilities, and fights corruption to restore light to his homeland.
+
+                  </p>
+
+
+                  <div class="folder-meta-tags">
+
+                    <span>
+                      <strong>Duration:</strong>
+                      4 Months
+                    </span>
+
+                    <span>
+                      <strong>Engine:</strong>
+                      Custom Engine (C++ / SDL)
+                    </span>
+
+                    <span>
+                      <strong>Role:</strong>
+                      Game Designer & C++ Programmer
+                    </span>
+
+                    <span>
+                      <strong>Tags:</strong>
+                      2D Platformer, C++, SDL, Tiled, Mechanics Design
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="explore-more-btn-sm"
+                onclick="openSecondaryProjectModal('ott-journey')">
+
+                Explore More
+
+              </button>
+
+            </div>
+
+
+            <!-- HUNDREDTOWN -->
+
+            <div
+              class="project-folder-card"
+              data-subcat="generic"
+              data-tags="Unity, C#, APIs, Optimization, Lighting">
+
+              <div class="folder-main-info">
+
+                <div class="card-image-wrapper">
+
+                  <img
+                    src="assets/NowARTS/capsula.png"
+                    alt="The HundredTown">
+
+                </div>
+
+
+                <div class="folder-text-content">
+
+                  <div class="folder-header">
+
+                    <h3>
+                      The HundredTown
+                    </h3>
+
+                    <div class="badge-container">
+
+                      <span class="folder-badge badge-internship">
+                        INTERNSHIP
+                      </span>
+
+                    </div>
+
+                  </div>
+
+
+                  <p class="folder-desc">
+
+                    An interactive real-time 3D experience reproducing a dynamic campus with live weather APIs, day/night cycles, and precomputed baked lighting.
+
+                  </p>
+
+
+                  <div class="folder-meta-tags">
+
+                    <span>
+                      <strong>Duration:</strong>
+                      Internship Period
+                    </span>
+
+                    <span>
+                      <strong>Engine:</strong>
+                      Unity / C#
+                    </span>
+
+                    <span>
+                      <strong>Role:</strong>
+                      Design & Implementation Developer
+                    </span>
+
+                    <span>
+                      <strong>Tags:</strong>
+                      Unity, C#, COZY Weather 3, OpenWeatherMap API, Lightmap Baking, Post-Processing
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="explore-more-btn-sm"
+                onclick="openSecondaryProjectModal('hundred-town')">
+
+                Explore More
+
+              </button>
+
+            </div>
+
+
+            <!-- A DIFFERENT VISION -->
+
+            <div
+              class="project-folder-card"
+              data-subcat="generic"
+              data-tags="Unity, C#, VR, Meta Quest, Lighting, XR Interaction Toolkit">
+
+              <div class="folder-main-info">
+
+                <div class="card-image-wrapper">
+
+                  <img
+                    src="assets/Vision/Vis.png"
+                    alt="A Different Vision: A Color Blindness Experience">
+
+                </div>
+
+
+                <div class="folder-text-content">
+
+                  <div class="folder-header">
+
+                    <h3>
+                      A Different Vision: A Color Blindness Experience
+                    </h3>
+
+                    <div class="badge-container">
+
+                      <span class="folder-badge badge-vr">
+                        VIRTUAL REALITY
+                      </span>
+
+                      <span class="folder-badge badge-serious">
+                        SERIOUS GAME
+                      </span>
+
+                    </div>
+
+                  </div>
+
+
+                  <p class="folder-desc">
+
+                    A Virtual Reality (Meta Quest) educational experience simulating childhood color blindness across school environments and an interactive exhibition room.
+
+                  </p>
+
+
+                  <div class="folder-meta-tags">
+
+                    <span>
+                      <strong>Duration:</strong>
+                      2 Weeks
+                    </span>
+
+                    <span>
+                      <strong>Engine:</strong>
+                      Unity / C# / XR Interaction Toolkit
+                    </span>
+
+                    <span>
+                      <strong>Role:</strong>
+                      VR Programmer & Environment Designer
+                    </span>
+
+                    <span>
+                      <strong>Tags:</strong>
+                      Unity, VR, Meta Quest, XR Interaction Toolkit, Lighting Setup, Interactive UI
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="explore-more-btn-sm"
+                onclick="openSecondaryProjectModal('a-different-vision')">
+
+                Explore More
+
+              </button>
+
+            </div>
+
+
+            <!-- GEOGUIDE -->
+
+            <div
+              class="project-folder-card"
+              data-subcat="generic"
+              data-tags="Unity, C#, Educational, Serious Game, UI Automation, Save System">
+
+              <div class="folder-main-info">
+
+                <div class="card-image-wrapper">
+
+                  <img
+                    src="assets/GeoGuide/menu_inicial.png"
+                    alt="GeoGuide">
+
+                </div>
+
+
+                <div class="folder-text-content">
+
+                  <div class="folder-header">
+
+                    <h3>
+                      GeoGuide
+                    </h3>
+
+                    <div class="badge-container">
+
+                      <span class="folder-badge badge-unity">
+                        UNITY
+                      </span>
+
+                      <span class="folder-badge badge-csharp">
+                        C#
+                      </span>
+
+                      <span class="folder-badge badge-serious">
+                        SERIOUS GAME
+                      </span>
+
+                    </div>
+
+                  </div>
+
+
+                  <p class="folder-desc">
+
+                    A casual educational simulation game designed to help children (ages 8–15) learn world geography by piloting an aircraft to transport clients globally while discovering interesting facts.
+
+                  </p>
+
+
+                  <div class="folder-meta-tags">
+
+                    <span>
+                      <strong>Duration:</strong>
+                      4 Months
+                    </span>
+
+                    <span>
+                      <strong>Engine:</strong>
+                      Unity / C#
+                    </span>
+
+                    <span>
+                      <strong>Role:</strong>
+                      UI Developer, Save System & Gameplay Programmer
+                    </span>
+
+                    <span>
+                      <strong>Tags:</strong>
+                      Unity, C#, UI Navigation, Save System, Hint System, Progress Tracking
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="explore-more-btn-sm"
+                onclick="openSecondaryProjectModal('geoguide')">
+
+                Explore More
+
+              </button>
+
+            </div>
+
+
+            <!-- WILDLIFE -->
+
+            <div
+              class="project-folder-card"
+              data-subcat="generic"
+              data-tags="Unity, C#, AI, FSM, Behavior Trees, NavMesh">
+
+              <div class="folder-main-info">
+
+                <div class="card-image-wrapper">
+
+                  <img
+                    src="assets/WildLife/capsula.png"
+                    alt="Wildlife Simulator">
+
+                </div>
+
+
+                <div class="folder-text-content">
+
+                  <div class="folder-header">
+
+                    <h3>
+                      Wildlife Simulator
+                    </h3>
+
+                    <div class="badge-container">
+
+                      <span class="folder-badge badge-unity">
+                        UNITY
+                      </span>
+
+                      <span class="folder-badge badge-csharp">
+                        C#
+                      </span>
+
+                      <span class="folder-badge badge-ai">
+                        GAME AI
+                      </span>
+
+                    </div>
+
+                  </div>
+
+
+                  <p class="folder-desc">
+
+                    Wildlife AI simulator inspired by animal behavior and sensory survival, featuring procedural Perlin-noise environments and an advanced AI system imitating carnivores' sense of smell.
+
+                  </p>
+
+
+                  <div class="folder-meta-tags">
+
+                    <span>
+                      <strong>Duration:</strong>
+                      2 Weeks
+                    </span>
+
+                    <span>
+                      <strong>Engine:</strong>
+                      Unity / C#
+                    </span>
+
+                    <span>
+                      <strong>Role:</strong>
+                      AI Programmer & Systems Developer
+                    </span>
+
+                    <span>
+                      <strong>Tags:</strong>
+                      Unity, C#, FSM, Behavior Trees, NavMesh, Sensory AI, Scent Trail
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="explore-more-btn-sm"
+                onclick="openSecondaryProjectModal('wildlife-simulator')">
+
+                Explore More
+
+              </button>
+
+            </div>
+
+
+            <!-- NEST -->
+
+            <div
+              class="project-folder-card"
+              data-subcat="generic"
+              data-tags="C++, PhysX, Custom Physics, Game Engine, Physics Simulation, Solo Project">
+
+              <div class="folder-main-info">
+
+                <div class="card-image-wrapper">
+
+                  <img
+                    src="assets/Fisica/1.png"
+                    alt="Nest: Winter Edition">
+
+                </div>
+
+
+                <div class="folder-text-content">
+
+                  <div class="folder-header">
+
+                    <h3>
+                      Nest: Winter Edition
+                    </h3>
+
+                    <div class="badge-container">
+
+                      <span class="folder-badge badge-cpp">
+                        C++
+                      </span>
+
+                      <span class="folder-badge badge-physics">
+                        PHYSX
+                      </span>
+
+                      <span class="folder-badge badge-solo">
+                        SOLO PROJECT
+                      </span>
+
+                    </div>
+
+                  </div>
+
+
+                  <p class="folder-desc">
+
+                    A 3D physics-based strategy puzzle game built in C++ using Nvidia PhysX. Guide a fledgling bird safely back to its nest across winter levels featuring shape-shifting mechanics, custom force generators, and weather dynamics.
+
+                  </p>
+
+
+                  <div class="folder-meta-tags">
+
+                    <span>
+                      <strong>Type:</strong>
+                      Solo Project
+                    </span>
+
+                    <span>
+                      <strong>Engine / Tech:</strong>
+                      C++ / Nvidia PhysX
+                    </span>
+
+                    <span>
+                      <strong>Role:</strong>
+                      Physics & Engine Programmer, Level Designer
+                    </span>
+
+                    <span>
+                      <strong>Tags:</strong>
+                      C++, PhysX, Custom Physics, Force Generators, Particle Systems, 2D Constraint Simulation
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="explore-more-btn-sm"
+                onclick="openSecondaryProjectModal('nest-winter-edition')">
+
+                Explore More
+
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- =================================================
+               LEVEL DESIGN
+               ================================================= -->
+
+          <div
+            id="cat-level-design"
+            class="category-group">
+
+            <div class="wip-container">
+
+              <div class="wip-icon">
+                🚧
+              </div>
+
+              <h3>
+                Under Construction
+              </h3>
+
+              <p>
+                New Level Design blockouts & documentation coming soon!
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <!-- =================================================
+               GAME JAMS
+               ================================================= -->
+
+          <div
+            id="cat-game-jams"
+            class="category-group scrollable-group">
+
+
+            <!-- JAM 1 -->
+
+            <div
+              class="project-folder-card"
+              data-tags="Unity, C#, Jam, Physics">
+
+              <div class="folder-main-info">
+
+                <div class="card-image-wrapper">
+
+                  <img
+                    src="assets/TongueTwitser/capsula.png"
+                    alt="Tongue Twister">
+
+                </div>
+
+                <div class="folder-text-content">
+
+                  <div class="folder-header">
+
+                    <h3>
+                      Tongue Twister: Nos hemos liao
+                    </h3>
+
+                    <div class="badge-container">
+
+                      <span class="folder-badge badge-jam">
+                        GLOBAL GAME JAM 2025
+                      </span>
+
+                    </div>
+
+                  </div>
+
+                  <p class="folder-desc">
+
+                    Fun and unpredictable game where players control a tongue that must untangle itself while completing challenging objectives.
+
+                  </p>
+
+                  <div class="folder-meta-tags">
+
+                    <span>
+                      <strong>Duration:</strong>
+                      3 days
+                    </span>
+
+                    <span>
+                      <strong>Engine:</strong>
+                      Unity (C#)
+                    </span>
+
+                    <span>
+                      <strong>Role:</strong>
+                      Game Designer 
+                    </span>
+
+                    <span>
+                      <strong>Tags:</strong>
+                      Jam, Physics, Local Multiplayer, Co-op
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="explore-more-btn-sm"
+                onclick="openSecondaryProjectModal('jam-1')">
+
+                Explore More
+
+              </button>
+
+            </div>
+
+
+            <!-- JAM 2 -->
+
+            <div
+              class="project-folder-card"
+              data-tags="Unity, C#, Jam">
+
+              <div class="folder-main-info">
+
+                <div class="card-image-wrapper">
+
+                  <img
+                    src="assets/Bubble/1.png"
+                    alt="Bubble Party XP">
+
+                </div>
+
+                <div class="folder-text-content">
+
+                  <div class="folder-header">
+
+                    <h3>
+                      Bubble Party XP: ¡Ahora con el móvil!
+                    </h3>
+
+                    <div class="badge-container">
+
+                      <span class="folder-badge badge-jam">
+                        INDIE GAME JAM
+                      </span>
+
+                    </div>
+
+                  </div>
+
+                  <p class="folder-desc">
+
+                    Interactive party game where players connect their own smartphones and use them as dynamic controllers.
+
+                  </p>
+
+                  <div class="folder-meta-tags">
+
+                    <span>
+                      <strong>Duration:</strong>
+                      72 Hours
+                    </span>
+
+                    <span>
+                      <strong>Engine:</strong>
+                      Unity (C#)
+                    </span>
+
+                    <span>
+                      <strong>Role:</strong>
+                      Gameplay Designer
+                    </span>
+
+                    <span>
+                      <strong>Tags:</strong>
+                      Party Game, Mobile Controller, Local Multiplayer, Casual
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="explore-more-btn-sm"
+                onclick="openSecondaryProjectModal('jam-2')">
+
+                Explore More
+
+              </button>
+
+            </div>
+
+
+            <!-- JAM 3 -->
+
+            <div
+              class="project-folder-card"
+              data-tags="Unity, Jam">
+
+              <div class="folder-main-info">
+
+                <div class="card-image-wrapper">
+
+                  <img
+                    src="assets/Enamorado/6.png"
+                    alt="Mi Enamorado Enmascarado">
+
+                </div>
+
+                <div class="folder-text-content">
+
+                  <div class="folder-header">
+
+                    <h3>
+                      Mi Enamorado Enmascarado
+                    </h3>
+
+                    <div class="badge-container">
+
+                      <span class="folder-badge badge-jam">
+                        NARRATIVE GAME JAM
+                      </span>
+
+                    </div>
+
+                  </div>
+
+                  <p class="folder-desc">
+
+                    A humorous point-and-click narrative dating sim about charming Villa Careta's most eligible bachelors to secure a date for the final festival dance.
+                  
+                  </p>
+
+                  <div class="folder-meta-tags">
+
+                    <span>
+                      <strong>Duration:</strong>
+                      48 Hours
+                    </span>
+
+                    <span>
+                      <strong>Engine:</strong>
+                      Unity 
+                    </span>
+
+                    <span>
+                      <strong>Role:</strong>
+                      2D Artist / Narrative designer
+                    </span>
+
+                    <span>
+                      <strong>Tags:</strong>
+                      Narrative, Visual Novel, Comedy
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="explore-more-btn-sm"
+                onclick="openSecondaryProjectModal('jam-3')">
+
+                Explore More
+
+              </button>
+
+            </div>
+
+
+            <!-- JAM 4 -->
+
+            <div
+              class="project-folder-card"
+              data-tags="Unity, C#, Jam">
+
+              <div class="folder-main-info">
+
+                <div class="card-image-wrapper">
+
+                  <img
+                    src="assets/Riega/1.png"
+                    alt="Riega la nota o aplasta la bichota">
+
+                </div>
+
+                <div class="folder-text-content">
+
+                  <div class="folder-header">
+
+                    <h3>
+                      Riega la nota o aplasta la bichota
+                    </h3>
+
+                    <div class="badge-container">
+
+                      <span class="folder-badge badge-jam">
+                        GAME JAM
+                      </span>
+
+                    </div>
+
+                  </div>
+
+                  <p class="folder-desc">
+
+                    A rhythm-based arcade game where players must keep their plants watered while dodging and crushing annoying bugs.
+
+                  </p>
+
+                  <div class="folder-meta-tags">
+
+                    <span>
+                      <strong>Duration:</strong>
+                      48 Hours
+                    </span>
+
+                    <span>
+                      <strong>Engine:</strong>
+                      Unity (C#)
+                    </span>
+
+                    <span>
+                      <strong>Role:</strong>
+                      Game Designer & Artist
+                    </span>
+
+                    <span>
+                      <strong>Tags:</strong>
+                      Arcade, Fast-Paced, 2D, Casual
+                    </span>
+
+                  </div>
+
+                </div>
+
+              </div>
+
+
+              <button
+                class="explore-more-btn-sm"
+                onclick="openSecondaryProjectModal('jam-4')">
+
+                Explore More
+
+              </button>
+
+            </div>
+
+          </div>
+
+
+          <!-- =================================================
+               TAG FILTER
+               ================================================= -->
+
+          <div
+            id="global-tag-filter"
+            class="tag-filter-container bottom-filter-bar hidden-by-filter">
+
+            <span class="filter-label">
+              Filter by Tag:
+            </span>
+
+
+            <div class="tag-chips">
+
+              <button
+                class="tag-chip active"
+                onclick="filterByTag('ALL', this)">
+
+                All
+
+              </button>
+
+
+              <button
+                class="tag-chip"
+                onclick="filterByTag('Unity', this)">
+
+                Unity
+
+              </button>
+
+
+              <button
+                class="tag-chip"
+                onclick="filterByTag('Unreal Engine', this)">
+
+                Unreal
+
+              </button>
+
+
+              <button
+                class="tag-chip"
+                onclick="filterByTag('C#', this)">
+
+                C#
+
+              </button>
+
+
+              <button
+                class="tag-chip"
+                onclick="filterByTag('C++', this)">
+
+                C++
+
+              </button>
+
+
+              <button
+                class="tag-chip"
+                onclick="filterByTag('AI', this)">
+
+                AI
+
+              </button>
+
+
+              <button
+                class="tag-chip"
+                onclick="filterByTag('Accessibility', this)">
+
+                Accessibility
+
+              </button>
+
+
+              <button
+                class="tag-chip"
+                onclick="filterByTag('Jam', this)">
+
+                Jam
+
+              </button>
+
+
+              <button
+                class="tag-chip"
+                onclick="filterByTag('Physics', this)">
+
+                Physics
+
+              </button>
+
+            </div>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section>
+
+
+    <hr class="divider">
+
+
+    <!-- =====================================================
+         02 / ABOUT ME
+         ===================================================== -->
+  <section
+      id="about"
+      class="section-about">
+
+         <div class="portfolio-section">
+  <small style="color: #a3e635; font-weight: 600; font-size: 0.9rem;">02 / BACKGROUND & SKILLS</small>
+  <h2 style="color: #fff; font-size: 2.2rem; margin-top: 4px;">A little more about me</h2>
+
+  <div class="about-grid-container">
+    
+    <!-- COLUMNA IZQUIERDA: EXPERIENCIA Y EDUCACIÓN -->
+    <div class="timeline-section">
+      <h3>Academic & Experience</h3>
+      
+      <div class="timeline">
+        
+        <!-- UTAD MASTER -->
+        <div class="timeline-item">
+          <span class="timeline-date">2025 – Present</span>
+          <div class="timeline-title">Master's Degree in Game Design</div>
+          <div class="timeline-sub"><strong>U-TAD (Centro Universitario de Tecnología y Arte Digital)</strong></div>
+          <div class="timeline-desc">
+            Currently specializing in advanced game design methodologies, mechanics prototyping, and system architecture.
+          </div>
+        </div>
+
+        <!-- WORK / INTERNSHIP -->
+        <div class="timeline-item">
+          <span class="timeline-date">2025</span>
+          <div class="timeline-title">Game Development Intern <span class="badge-internship">INTERNSHIP</span></div>
+          <div class="timeline-sub"><strong>NowAR Lab</strong></div>
+          <div class="timeline-desc">
+            Integrated real-time weather API systems in Unity and developed optimized baked lightmaps and dynamic lighting effects.
+          </div>
+        </div>
+
+        <!-- UCM DEGREE -->
+        <div class="timeline-item">
+          <span class="timeline-date">2021 – 2025</span>
+          <div class="timeline-title">Bachelor's Degree in Video Game Dev</div>
+          <div class="timeline-sub"><strong>Universidad Complutense de Madrid</strong></div>
+          <div class="timeline-desc">
+            Awarded <strong>Honors</strong> for Bachelor's Thesis: <em>"Virtual Reality Game Interaction System Using LLMs"</em> in Unreal Engine 5. Active member of the UCM Mentoring Club.
+          </div>
+        </div>
+
+        <!-- DAKOTA RIDGE HIGH SCHOOL -->
+        <div class="timeline-item">
+          <span class="timeline-date">2018 – 2019</span>
+          <div class="timeline-title">International Exchange Program</div>
+          <div class="timeline-sub"><strong>Dakota Ridge High School (Colorado, USA)</strong></div>
+          <div class="timeline-desc">
+            Gained international academic experience and full C1 English fluency.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- COLUMNA DERECHA: SKILLS CON LOGOS MÁS GRANDES -->
+    <div class="skills-section">
+      <h3>Technical Arsenal</h3>
+
+      <!-- PROGRAMMING LANGUAGES -->
+      <div class="skill-category">
+        <div class="skill-category-title">Programming Languages</div>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/c/c-original.svg" alt="C">
+            <span>C</span>
+          </div>
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/cplusplus/cplusplus-original.svg" alt="C++">
+            <span>C++</span>
+          </div>
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" alt="C#">
+            <span>C#</span>
+          </div>
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" alt="Python">
+            <span>Python</span>
+          </div>
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/java/java-original.svg" alt="Java">
+            <span>Java</span>
+          </div>
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" alt="JavaScript">
+            <span>JavaScript</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- GAME ENGINES & PLATFORMS -->
+      <div class="skill-category">
+        <div class="skill-category-title">Game Engines & Platforms</div>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unrealengine/unrealengine-original.svg" class="icon-light" alt="Unreal Engine 5">
+            <span>Unreal 5</span>
+          </div>
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/unity/unity-original.svg" class="icon-light" alt="Unity">
+            <span>Unity</span>
+          </div>
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/godot/godot-original.svg" alt="Godot">
+            <span>Godot</span>
+          </div>
+          <div class="skill-card">
+            <img src="https://cdn.simpleicons.org/playstation/ffffff" alt="PS5 Development">
+            <span>PS5 Dev</span>
+          </div>
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/android/android-original.svg" alt="Android Development">
+            <span>Android</span>
+          </div>
+          <div class="skill-card">
+            <img src="https://cdn.simpleicons.org/meta/a3e635" alt="Meta Quest & VR">
+            <span>Meta Quest / VR</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- TOOLS & AUDIO -->
+      <div class="skill-category">
+        <div class="skill-category-title">Tools & Audio</div>
+        <div class="skills-grid">
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git">
+            <span>Git</span>
+          </div>
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" alt="Visual Studio">
+            <span>Visual Studio</span>
+          </div>
+          <div class="skill-card">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/blender/blender-original.svg" alt="Blender">
+            <span>Blender</span>
+          </div>
+          <div class="skill-card">
+            <img src="https://cdn.simpleicons.org/fmod/a3e635" alt="FMOD">
+            <span>FMOD</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- SOFTWARE DEVELOPMENT -->
+      <div class="skill-category">
+        <div class="skill-category-title">Software Development</div>
+        <div class="concept-tags">
+          <span class="concept-tag">Video Game Dev</span>
+          <span class="concept-tag">Application Dev</span>
+          <span class="concept-tag">Software Architecture</span>
+          <span class="concept-tag">Debugging</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+</section>
+<!-- SECTION: CONTACT ME (Con id="contact") -->
+<section id="contact" class="contact-section">
+  <small style="color: #a3e635; font-weight: 600; font-size: 0.9rem;">03 / CONTACT</small>
+  <h2 style="color: #fff; font-size: 2.2rem; margin-top: 4px;">LET'S TALK GAMES.</h2>
+
+  <div class="contact-container">
+    <!-- INFORMACIÓN Y ENLACES DIRECTOS -->
+    <div class="contact-info">
+      <p>Whether you have an exciting project, a job offer, or just want to chat about game mechanics, feel free to reach out!</p>
+
+      <div class="contact-links">
+       <!-- Correo personal (Copia al portapapeles) -->
+      <button type="button" class="contact-card copy-email-btn" onclick="copyEmail(this)">
+        <img src="https://cdn.simpleicons.org/gmail/a3e635" alt="Email">
+        <span class="email-text">tyzarzuelamor@gmail.com</span>
+        <span class="tooltip-text">¡Copiar!</span>
+      </button>
+
+        <!-- LinkedIn -->
+        <a href="https://www.linkedin.com/in/tylerzarzuelaamor" target="_blank" class="contact-card">
+         <img src="https://api.iconify.design/line-md:linkedin.svg?color=%23a3e635" alt="LinkedIn">
+          <span>LinkedIn / Tyler Zarzuela</span>
+        </a>
+
+        <!-- itch.io (Especial para gamedevs) -->
+        <a href="https://tyzarzuela.itch.io/" target="_blank" class="contact-card">
+          <img src="https://cdn.simpleicons.org/itchdotio/a3e635" alt="itch.io">
+          <span>Personal Itch.io </span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Formulario directo a Notificación -->
+<form class="contact-form" id="notify-form" onsubmit="sendNotification(event)">
+  <div class="form-group">
+    <label for="sender-name">Tu nombre o red social</label>
+    <input type="text" id="sender-name" placeholder="Ej. Alex / @alex_dev" required>
+  </div>
+
+  <div class="form-group">
+    <label for="sender-msg">Mensaje rápido</label>
+    <textarea id="sender-msg" rows="3" placeholder="¡Hola Tyler! Me ha gustado tu portfolio..." required></textarea>
+  </div>
+
+  <button type="submit" class="btn-send" id="send-btn">Enviar aviso 🚀</button>
+</form>
+
+<script>
+async function sendNotification(event) {
+  event.preventDefault();
+  
+  const name = document.getElementById('sender-name').value;
+  const message = document.getElementById('sender-msg').value;
+  const btn = document.getElementById('send-btn');
+
+  // PEGA AQUÍ LA URL DE TU WEBHOOK DE DISCORD
+  const webhookURL = "https://discordapp.com/api/webhooks/1557379394786426986/XKwe_75nsvv6Fu3IVEopv8e_qTQXWrizDGaMeUgGFVM_MKVBqbOOxjorhkWygGwOx4Nd";
+
+  btn.disabled = true;
+  btn.innerText = "Enviando...";
+
+  try {
+    const response = await fetch(webhookURL, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        embeds: [{
+          title: "🎮 ¡Nuevo mensaje desde la Web!",
+          color: 0xa3e635, // Color verde de tu portfolio
+          fields: [
+            { name: "De:", value: name, inline: true },
+            { name: "Mensaje:", value: message }
+          ],
+          footer: { text: "Tyler Zarzuela Portfolio" }
+        }]
+      })
+    });
+
+    if (response.ok) {
+      btn.innerText = "¡Notificación enviada!";
+      btn.style.background = "#22c55e";
+      document.getElementById('notify-form').reset();
+    } else {
+      throw new Error();
+    }
+  } catch (err) {
+    btn.innerText = "Error al enviar";
+    btn.style.background = "#ef4444";
+  }
+
+  setTimeout(() => {
+    btn.disabled = false;
+    btn.innerText = "Enviar aviso";
+    btn.style.background = "#a3e635";
+  }, 4000);
+}
+</script>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Tyler Zarzuela. All rights reserved.</p>
+</footer>
+
+    </section>
+
+
+  </main>
+
+
+  <!-- =====================================================
+       PROJECT MODAL
+       ===================================================== -->
+
+  <div
+    id="project-modal"
+    class="modal-backdrop"
+    onclick="closeModalOnBackdrop(event)">
+
+
+    <div class="modal-box">
+
+
+      <div class="modal-header">
+
+        <h2
+          id="modal-title"
+          class="modal-title">
+
+          Project Title
+
+        </h2>
+
+
+        <button
+          class="modal-close-btn"
+          onclick="closeModal()">
+
+          &times;
+
+        </button>
+
+      </div>
+
+
+      <div id="modal-content-area">
+
+        <div
+          id="modal-description"
+          class="modal-body">
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <!-- =====================================================
+       JAVASCRIPT
+       ===================================================== -->
+
+  <script src="script.js"></script>
+<script>
+function copyEmail(button) {
+  const email = button.querySelector('.email-text').innerText;
+  const tooltip = button.querySelector('.tooltip-text');
+
+  // Copia el texto al portapapeles
+  navigator.clipboard.writeText(email).then(() => {
+    tooltip.innerText = '¡Copiado! ✓';
+    
+    // Vuelve al estado original después de 2 segundos
+    setTimeout(() => {
+      tooltip.innerText = '¡Copiar!';
+    }, 2000);
+  }).catch(err => {
+    console.error('Error al copiar: ', err);
+  });
+}
+</script>
+</body>
+
+</html>
